@@ -14,3 +14,13 @@ class Class(db.Model):
 
     gyms = db.relationship('Gym', back_populates='Classes')
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'imageUrl': self.imageUrl,
+            'gyms': self.gym_id,
+            'time': self.time,
+            'description': self.description,
+            'cost': self.cost,
+        }
