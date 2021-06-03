@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import SplashPage from "./components/SplashPage"
 import { authenticate } from "./store/session";
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -29,21 +30,30 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route path="/" exact={true}>
+          <SplashPage />
+        </Route>
+
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
+
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
+
         <ProtectedRoute path="/users" exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
+
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} >
+
+        {/* <ProtectedRoute path="/" exact={true} >
           <h1>My Home Page</h1>
-        </ProtectedRoute>
+        </ProtectedRoute> */}
+
       </Switch>
     </BrowserRouter>
   );
