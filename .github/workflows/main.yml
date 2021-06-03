@@ -1,6 +1,6 @@
 name: Push Container to Heroku
 
-on: 
+on:
   push:
     branches:
       - main
@@ -11,14 +11,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Login to Heroku Container registry
-      env: 
+      env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:login 
+      run: heroku container:login
     - name: Build and push
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:push -a muaythaimayhem-app web 
+      run: heroku container:push -a muaythaimayhem web
     - name: Release
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:release -a muaythaimayhem-app web 
+      run: heroku container:release -a muaythaimayhem web

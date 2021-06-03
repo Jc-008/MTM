@@ -12,7 +12,7 @@ class Gym(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     user = db.relationship("User", back_populates="gyms")
-    classSessions = db.relationship("ClassSessions", back_populates="gyms")
+    classSessions = db.relationship("ClassSession", back_populates="gyms")
 
     def to_dict(self):
         return {
