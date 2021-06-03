@@ -9,9 +9,9 @@ favorites = db.Table(
         primary_key=True
     ),
     db.Column(
-        'classSession_id',
+        'class_session_id',
         db.Integer,
-        db.ForeignKey('classSessions.id'),
+        db.ForeignKey('class_sessions.id'),
         primary_key=True
     ),
 )

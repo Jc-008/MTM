@@ -1,8 +1,9 @@
 from .db import db
+from .favorite import favorites
 
 
 class ClassSession(db.Model):
-    ___tablename__ = 'classSessions'
+    __tablename__ = 'class_sessions'
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50))
@@ -15,6 +16,7 @@ class ClassSession(db.Model):
     # need to double check line 10 and line 17 to make sure its working
 
     gyms = db.relationship('Gym', back_populates='classSessions')
+    userFavs = db.relationship('User', secondary=favorites)
 
     def to_dict(self):
         return {

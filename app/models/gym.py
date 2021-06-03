@@ -11,7 +11,8 @@ class Gym(db.Model):
     hours_of_operation = db.Column(db.String(255))
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
-    users = db.relationship("User", back_populates="gyms")
+    user = db.relationship("User", back_populates="gyms")
+    classSessions = db.relationship("ClassSessions", back_populates="gyms")
 
     def to_dict(self):
         return {

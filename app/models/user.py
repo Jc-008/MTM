@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .favorite import favorites
 
 
 class User(db.Model, UserMixin):
@@ -12,6 +13,9 @@ class User(db.Model, UserMixin):
     zipcode = db.Column(db.String(5), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
     is_owner = db.Column(db.Boolean(), nullable=False)
+
+    gyms = db.relationship("Gym", back_populates="user")
+    favSessions = db.relationship("ClassSession", secondary=favorites)
 
     @property
     def password(self):
@@ -28,6 +32,6 @@ class User(db.Model, UserMixin):
         return {
             "id": self.id,
             "username": self.username,
-            "email": self.email,
+            # "email": self.email,
             "zipcode": self.zipcode,
         }
