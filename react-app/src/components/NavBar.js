@@ -27,8 +27,8 @@ const NavBar = () => {
   return (
     <>
       <Grid templateColumns="repeat(10, 1fr)" gap={.7} bg="#FFFFF" minHeight={'64px'} >
-        <Flex alignItems='center' justifyContent='center' w="100%" h="64px">
-          <Link href='/' fontSize={'23px'} textAlign="center" fontWeight="Bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >MTM</Link>
+        <Flex alignItems='center' justifyContent='center' w="100%" h="64px" _hover={{ fontWeight: "bold", bg: "#f7f7f7" }}>
+          <Link href='/' fontSize={'23px'} textAlign="center" fontWeight="Bold" style={{ textDecoration: 'none' }}>MTM</Link>
         </Flex>
         {/* <Flex w="100%" h="55px" /> */}
         <Flex w="100%" h="55px" mt={'-8px'}>
@@ -41,15 +41,16 @@ const NavBar = () => {
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />
-        <Flex alignItems='center' justifyContent='center' w="100%" h="64px">
-          <Link href='' textAlign="center" fontWeight="500" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >How it works</Link>
+        <Flex alignItems='center' justifyContent='center' w="100%" h="64px" _hover={{ fontWeight: "bold", bg: "#f7f7f7" }}>
+          <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }} >How it works</Link>
+          {/* <Link href='' textAlign="center" fontWeight="500" _hover={{ fontWeight: "bold", bg: "#dedede" }} >How it works</Link> */}
         </Flex>
-        <Flex alignItems='center' justifyContent='center' w="100%" h="64px">
-          <Link href='' textAlign="center" fontWeight="500" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Locations</Link>
+        <Flex alignItems='center' justifyContent='center' w="100%" h="64px" _hover={{ fontWeight: "bold", bg: "#f7f7f7" }}>
+          <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>Locations</Link>
         </Flex>
         {/* <Button href='' w="100%" h="25px" textAlign="center" paddingTop={4} fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Try MTM</Button> */}
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px">
-          <Button href='' w='100px' bg='#0055FF' color='white' _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Try MTM</Button>
+          <Button href='' w='100px' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}>Try MTM</Button>
         </Flex>
       </Grid >
     </>
