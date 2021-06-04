@@ -48,7 +48,7 @@ const SearchBarFormPt2 = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <Button type='Submit' colorScheme="white" variant="ghost" _hover={{ color: "white", fontWeight: "bold", bg: "gray.400" }}><i className="fas fa-search"></i></Button>
+          <Button type='Submit' rounded='25px' colorScheme="white" variant="ghost" _hover={{ color: "white", fontWeight: "bold", bg: '#dedede' }}><i className="fas fa-search"></i></Button>
           {/* <Button onClick={handleSearch} type='Submit' colorScheme="white" variant="ghost" _hover={{ color: "white", fontWeight: "bold", bg: "gray.400" }}><i className="fas fa-search"></i></Button> */}
         </InputGroup>
       </FormControl>
