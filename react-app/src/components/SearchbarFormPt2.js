@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 
 
-const SearchBarForm = () => {
+const SearchBarFormPt2 = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [searchTerm, setSearchTerm] = useState('')
@@ -36,19 +36,19 @@ const SearchBarForm = () => {
     <form onSubmit>
       {/* <form onSubmit={handleSearch}> */}
       <FormControl
-        w="400px" h="55" bg="#FFFFFF" color='#000000' textAlign="center" paddingTop={5}
+        w="300px" h="55" bg="#FFFFFF" color='#000000' textAlign="center" paddingTop={5}
       >
         <InputGroup>
           <Input
-            placeholder="Find a gym or class"
+            placeholder="Location"
             rounded={'25px'}
-            // borderRight={'hidden'}
+            // borderLeft={'hidden'}
             bg="white"
             type='text'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          {/* <Button type='Submit' colorScheme="white" variant="ghost" _hover={{ color: "white", fontWeight: "bold", bg: "gray.400" }}><i className="fas fa-search"></i></Button> */}
+          <Button type='Submit' colorScheme="white" variant="ghost" _hover={{ color: "white", fontWeight: "bold", bg: "gray.400" }}><i className="fas fa-search"></i></Button>
           {/* <Button onClick={handleSearch} type='Submit' colorScheme="white" variant="ghost" _hover={{ color: "white", fontWeight: "bold", bg: "gray.400" }}><i className="fas fa-search"></i></Button> */}
         </InputGroup>
       </FormControl>
@@ -56,4 +56,4 @@ const SearchBarForm = () => {
   )
 }
 
-export default SearchBarForm;
+export default SearchBarFormPt2;

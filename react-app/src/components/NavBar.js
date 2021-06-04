@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import SearchBarForm from '../components/SearchbarForm'
+import SearchBarFormPt2 from '../components/SearchbarFormPt2'
 import {
   Wrap,
   WrapItem,
@@ -24,24 +25,34 @@ import {
 
 const NavBar = () => {
   return (
-    <Flex>
-      <Flex w="100%" h="55px">
-        <Link href='/' w="100%" h="55px" textAlign="center" paddingTop={5} fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >MTM</Link>
-      </Flex>
-      <Flex w="100%" h="55px">
-        <SearchBarForm />
-      </Flex>
-      <Flex w="100%" h="55px" />
-      <Flex w="100%" h="55px" />
-      <Flex w="100%" h="55px" />
-      <Flex w="100%" h="55px" />
-      <Link href='' w="100%" h="55px" textAlign="center" paddingTop={4} fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >How it works</Link>
-      <Link href='' w="100%" h="55px" textAlign="center" paddingTop={4} fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Locations</Link>
-      {/* <Button href='' w="100%" h="25px" textAlign="center" paddingTop={4} fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Try MTM</Button> */}
-      <Flex w="100%" h="55px" alignItems='center' justifyContent='center'>
-        <Button href='' w='100px' bg='#0055FF' color='white' _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Try MTM</Button>
-      </Flex>
-    </Flex>
+    <>
+      <Grid templateColumns="repeat(10, 1fr)" gap={.7} bg="#FFFFF" minHeight={'64px'} >
+        <Flex alignItems='center' justifyContent='center' w="100%" h="64px">
+          <Link href='/' textAlign="center" fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >MTM</Link>
+        </Flex>
+        {/* <Flex w="100%" h="55px" /> */}
+        <Flex w="100%" h="55px" mt={'-8px'}>
+          <SearchBarForm />
+        </Flex>
+        <Flex w="100%" h="55px" mt={'-8px'} >
+          <SearchBarFormPt2 />
+        </Flex>
+        <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />
+        <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />
+        <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />
+        <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />
+        <Flex alignItems='center' justifyContent='center' w="100%" h="64px">
+          <Link href='' textAlign="center" fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >How it works</Link>
+        </Flex>
+        <Flex alignItems='center' justifyContent='center' w="100%" h="64px">
+          <Link href='' textAlign="center" fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Locations</Link>
+        </Flex>
+        {/* <Button href='' w="100%" h="25px" textAlign="center" paddingTop={4} fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Try MTM</Button> */}
+        <Flex alignItems='center' justifyContent='center'>
+          <Button href='' w='100px' bg='#0055FF' color='white' _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Try MTM</Button>
+        </Flex>
+      </Grid >
+    </>
   );
 }
 
