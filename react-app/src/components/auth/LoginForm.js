@@ -47,7 +47,8 @@ export function LoginForm() {
         w={'450px'}
         rounded={'lg'}
         bg={useColorModeValue('white', 'gray.700')}
-        boxShadow={'lg'}
+        // boxShadow={'lg'}
+        boxShadow={'0 4px 12px rgb(0 0 0 / 10%)'}
         p={8}
 
       >
@@ -82,7 +83,7 @@ export function LoginForm() {
                 align={"center"}
                 justify={"center"}
               >
-                <Button type='Submit' bg='#0055FF' color='white'>Log in</Button>
+                <Button type='Submit' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}>Log in</Button>
               </Flex>
             </FormControl>
           </Stack>
@@ -94,7 +95,7 @@ export function LoginForm() {
             align={"center"}
             justify={"center"}
           >
-            <Button type="Submit" bg='#0055FF' color='white'>Demo User</Button>
+            <Button type="Submit" bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}>Demo User</Button>
           </Flex>
         </form>
         <br />
@@ -103,7 +104,7 @@ export function LoginForm() {
           justify={"flex-end"}
         >
           <Text fontSize={'15px'} color={'gray.600'}>
-            Business Owners, log in <Link color={'blue.400'}>here</Link>
+            Business Owners, log in <Link color={'#0055FF'}>here</Link>
           </Text>
         </Flex>
 
