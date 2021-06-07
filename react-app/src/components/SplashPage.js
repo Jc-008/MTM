@@ -24,14 +24,15 @@ export default function SplashPage() {
       <Flex
         align={"center"}
         justify={"center"}
-        mb={'50px'}
+        mb={'35px'}
       >
         <Box
           name={'image-container'}
           mw={'100vw'}>
           <Image
             // w={'100vw'}
-            h={'800px'}
+            h={'750px'}
+            rounded={'lg'}
             src="https://images.ctfassets.net/ew96z4wsnz93/2LGVlmCh6Apy9bAmXNvR8u/572c282fa3b69ca4f0618e95ffc4ffa2/Homepage_Hero-Image_Desktop2.jpg" />
         </Box>
       </Flex>

@@ -82,7 +82,7 @@ export function LoginForm() {
                 align={"center"}
                 justify={"center"}
               >
-                <Button type='Submit'>Log in</Button>
+                <Button type='Submit' bg='#0055FF' color='white'>Log in</Button>
               </Flex>
             </FormControl>
           </Stack>
@@ -94,12 +94,13 @@ export function LoginForm() {
             align={"center"}
             justify={"center"}
           >
-            <Button type="Submit">Demo User</Button>
+            <Button type="Submit" bg='#0055FF' color='white'>Demo User</Button>
           </Flex>
         </form>
+        <br />
         <Flex
           align={"center"}
-          justify={"center"}
+          justify={"flex-end"}
         >
           <Text fontSize={'15px'} color={'gray.600'}>
             Business Owners, log in <Link color={'blue.400'}>here</Link>
