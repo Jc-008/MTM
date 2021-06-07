@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import LoginForm from './auth/LoginForm'
 import { name, Wrap, WrapItem, Divider, Box, Image, Container, Center, LinkBox, LinkOverlay, Heading, Flex, Text } from "@chakra-ui/react"
 
 
@@ -20,16 +21,31 @@ export default function SplashPage() {
           🎉 Gyms' are re-opening for classes 🎉
         </Text>
       </Flex>
-      <Box
-        name={'image-container'}
-        mw={'100vw'}>
-        <Image
-          w={'100vw'}
-          src="https://images.ctfassets.net/ew96z4wsnz93/2LGVlmCh6Apy9bAmXNvR8u/572c282fa3b69ca4f0618e95ffc4ffa2/Homepage_Hero-Image_Desktop2.jpg" />
-      </Box>
-      <Box>
-        <Text>This is where the login form will be</Text>
-      </Box>
+      <Flex
+        align={"center"}
+        justify={"center"}
+        mb={'50px'}
+      >
+        <Box
+          name={'image-container'}
+          mw={'100vw'}>
+          <Image
+            // w={'100vw'}
+            h={'800px'}
+            src="https://images.ctfassets.net/ew96z4wsnz93/2LGVlmCh6Apy9bAmXNvR8u/572c282fa3b69ca4f0618e95ffc4ffa2/Homepage_Hero-Image_Desktop2.jpg" />
+        </Box>
+      </Flex>
+      <Flex
+        align={"center"}
+        justify={"center"}
+        mb={'50px'}
+      >
+        <Box>
+          {/* <Text>This is where the login form will be</Text> */}
+          <LoginForm />
+        </Box>
+
+      </Flex>
 
     </>
   )

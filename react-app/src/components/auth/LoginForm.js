@@ -1,64 +1,114 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { login } from "../../store/session";
+// import { Redirect } from "react-router-dom";
+// import { login } from "../../store/session";
+import * as sessionActions from "../../store/session"
+import {
+  Box,
+  Flex,
+  Link,
+  Text,
+  Input,
+  Stack,
+  Button,
+  FormLabel,
+  InputGroup,
+  FormControl,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
-const LoginForm = () => {
-  const [errors, setErrors] = useState([]);
+export function LoginForm() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const user = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
+  const [errors, setErrors] = useState([]);
 
-  const onLogin = async (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data.errors) {
-      setErrors(data.errors);
-    }
+    setErrors([]);
+    const dispatched = await dispatch(sessionActions.login(email, password))
+
+    if (dispatched.errors) setErrors(dispatch.errors)
   };
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
+  const handleDemo = async (e) => {
+    e.preventDefault();
+    const email = 'demo@aa.io';
+    const password = 'password'
+    const dispatched = await dispatch(sessionActions.login(email, password))
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  if (user) {
-    return <Redirect to="/" />;
+    if (dispatched.errors) setErrors(dispatch.errors)
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type="submit">Login</button>
-      </div>
-    </form>
+    <>
+      <Box
+        w={'450px'}
+        rounded={'lg'}
+        bg={useColorModeValue('white', 'gray.700')}
+        boxShadow={'lg'}
+        p={8}
+
+      >
+        <form onSubmit={handleSubmit}>
+          <div>
+            {errors.map((error, idx) => <span key={idx}>{error}</span>)}
+          </div>
+          <Stack spacing={3}>
+            <FormControl isRequired>
+              <FormLabel>Email</FormLabel>
+              <InputGroup>
+                <Input
+                  // ref={initialRef}
+                  placeholder="Email"
+                  type='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </InputGroup>
+              <FormLabel>Password</FormLabel>
+              <InputGroup>
+                <Input
+                  // ref={initialRef}
+                  placeholder="Password"
+                  type='password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </InputGroup>
+              <br />
+              <Flex
+                align={"center"}
+                justify={"center"}
+              >
+                <Button type='Submit'>Log in</Button>
+              </Flex>
+            </FormControl>
+          </Stack>
+        </form>
+
+        <form onSubmit={handleDemo}>
+          <br />
+          <Flex
+            align={"center"}
+            justify={"center"}
+          >
+            <Button type="Submit">Demo User</Button>
+          </Flex>
+        </form>
+        <Flex
+          align={"center"}
+          justify={"center"}
+        >
+          <Text fontSize={'15px'} color={'gray.600'}>
+            Business Owners, log in <Link color={'blue.400'}>here</Link>
+          </Text>
+        </Flex>
+
+      </Box>
+
+    </>
   );
 };
 
