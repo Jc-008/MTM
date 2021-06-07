@@ -17,7 +17,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-export function LoginForm() {
+export function BusinessOwnerLogin() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,14 +32,7 @@ export function LoginForm() {
     if (dispatched.errors) setErrors(dispatch.errors)
   };
 
-  const handleDemo = async (e) => {
-    e.preventDefault();
-    const email = 'demo@aa.io';
-    const password = 'password'
-    const dispatched = await dispatch(sessionActions.login(email, password))
 
-    if (dispatched.errors) setErrors(dispatch.errors)
-  }
 
   return (
     <>
@@ -47,8 +40,7 @@ export function LoginForm() {
         w={'450px'}
         rounded={'lg'}
         bg={useColorModeValue('white', 'gray.700')}
-        // boxShadow={'lg'}
-        boxShadow={'0 4px 12px rgb(0 0 0 / 10%)'}
+        boxShadow={'0 4px 12px rgb(0 0 0 / 24%)'}
         p={8}
 
       >
@@ -61,7 +53,6 @@ export function LoginForm() {
               <FormLabel>Email</FormLabel>
               <InputGroup>
                 <Input
-                  // ref={initialRef}
                   placeholder="Email"
                   type='email'
                   value={email}
@@ -71,7 +62,6 @@ export function LoginForm() {
               <FormLabel>Password</FormLabel>
               <InputGroup>
                 <Input
-                  // ref={initialRef}
                   placeholder="Password"
                   type='password'
                   value={password}
@@ -95,10 +85,10 @@ export function LoginForm() {
             align={"center"}
             justify={"center"}
           >
-            <Button type="Submit" bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}>Demo User</Button>
+            <Button type="Submit" bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}>Demo Biz Owner</Button>
           </Flex>
         </form>
-        <br />
+        {/* <br />
         <Flex
           align={"center"}
           justify={"flex-end"}
@@ -106,12 +96,11 @@ export function LoginForm() {
           <Text fontSize={'15px'} color={'gray.600'}>
             Business Owners, log in <Link href="/business-owner-login" color={'#0055FF'}>here</Link>
           </Text>
-        </Flex>
+        </Flex> */}
 
       </Box>
 
     </>
-  );
-};
+  )
 
-export default LoginForm;
+}
