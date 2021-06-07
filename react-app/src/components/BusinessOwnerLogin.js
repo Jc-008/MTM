@@ -66,6 +66,7 @@ export default function BusinessOwnerLogin() {
             justify={"center"}
             fontSize={'25px'}
             fontWeight={'600'}
+            mt={'15px'}
             mb={'25px'}
           >
             Welcome Back
@@ -93,6 +94,7 @@ export default function BusinessOwnerLogin() {
                     type='password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    mb={'10px'}
                   />
                 </InputGroup>
                 <br />
@@ -130,6 +132,7 @@ export default function BusinessOwnerLogin() {
               name={'image-next-to-login'}
               h={'200px'}
               src="https://sialdeporte.com/wp-content/uploads/2018/03/kickboxing1.jpg"
+              mb={'25px'}
             >
             </Image>
             <Text
@@ -144,6 +147,7 @@ export default function BusinessOwnerLogin() {
               align={"center"}
               justify={"center"}
               fontSize={'25px'}
+              mb={'8px'}
             >
               Join now
           </Text>
@@ -152,7 +156,7 @@ export default function BusinessOwnerLogin() {
               bg="'#f7f7f7'"
               // border="1px"
               variant={"outline"}
-              borderColor="black"
+              borderColor="#d6d6d6"
             >
               Try for free
             </Button>
