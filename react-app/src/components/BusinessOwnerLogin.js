@@ -8,6 +8,7 @@ import {
   Flex,
   Link,
   Text,
+  Image,
   Input,
   Stack,
   Button,
@@ -15,6 +16,7 @@ import {
   InputGroup,
   FormControl,
   useColorModeValue,
+  Container,
 } from "@chakra-ui/react";
 
 export default function BusinessOwnerLogin() {
@@ -52,12 +54,12 @@ export default function BusinessOwnerLogin() {
       >
         <Box
           w={'450px'}
-          rounded={'lg'}
+          // rounded={'xl'}
           bg={useColorModeValue('white', 'gray.700')}
           boxShadow={'0 4px 12px rgb(0 0 0 / 24%)'}
           p={8}
-          mt={'100px'}
-          h={'450px'}
+          // mt={'100px'}
+          h={'500px'}
         >
           <Text
             align={"center"}
@@ -81,6 +83,7 @@ export default function BusinessOwnerLogin() {
                     type='email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    mb={'15px'}
                   />
                 </InputGroup>
                 <FormLabel>Password</FormLabel>
@@ -92,7 +95,6 @@ export default function BusinessOwnerLogin() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </InputGroup>
-                <br />
                 <br />
                 <Flex
                   align={"center"}
@@ -115,9 +117,49 @@ export default function BusinessOwnerLogin() {
             </Flex>
           </form>
         </Box>
+
+        <Box
+          p={20}
+        >
+          <Flex
+            align={"center"}
+            justify={"center"}
+            direction={'column'}
+          >
+            <Image
+              name={'image-next-to-login'}
+              h={'200px'}
+              src="https://sialdeporte.com/wp-content/uploads/2018/03/kickboxing1.jpg"
+            >
+            </Image>
+            <Text
+              align={"center"}
+              justify={"center"}
+              fontWeight={'600'}
+              fontSize={'30px'}
+            >
+              Not a member yet?
+          </Text>
+            <Text
+              align={"center"}
+              justify={"center"}
+              fontSize={'25px'}
+            >
+              Join now
+          </Text>
+            <Button
+              type='Submit'
+              bg="'#f7f7f7'"
+              // border="1px"
+              variant={"outline"}
+              borderColor="black"
+            >
+              Try for free
+            </Button>
+          </Flex>
+        </Box>
+
       </Flex>
-
-
     </>
   )
 
