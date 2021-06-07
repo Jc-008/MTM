@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SplashPage from "./components/SplashPage"
 import Footer from './components/Footer'
+import BusinessOwnerLogin from "./components/BusinessOwnerLogin";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -37,6 +38,10 @@ function App() {
 
         <Route path="/login" exact={true}>
           <LoginForm />
+        </Route>
+
+        <Route path="/business-owner-login" exact={true}>
+          <BusinessOwnerLogin />
         </Route>
 
         <Route path="/sign-up" exact={true}>

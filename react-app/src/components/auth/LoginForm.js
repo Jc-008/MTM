@@ -104,7 +104,7 @@ export function LoginForm() {
           justify={"flex-end"}
         >
           <Text fontSize={'15px'} color={'gray.600'}>
-            Business Owners, log in <Link color={'#0055FF'}>here</Link>
+            Business Owners, log in <Link href="/business-owner-login" color={'#0055FF'}>here</Link>
           </Text>
         </Flex>
 
