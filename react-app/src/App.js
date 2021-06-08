@@ -10,8 +10,9 @@ import User from "./components/User";
 import SplashPage from "./components/SplashPage"
 import Footer from './components/Footer'
 import BusinessOwnerLogin from "./components/BusinessOwnerLogin";
-import { authenticate } from "./store/session";
 import SignUpPage from "./components/SignupPage";
+import UserHomePage from './components/UserHomePage';
+import { authenticate } from "./store/session";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -47,6 +48,10 @@ function App() {
 
         <Route path="/sign-up" exact={true}>
           <SignUpPage />
+        </Route>
+
+        <Route path="/search" exact={true}>
+          <UserHomePage />
         </Route>
 
         <ProtectedRoute path="/users" exact={true} >
