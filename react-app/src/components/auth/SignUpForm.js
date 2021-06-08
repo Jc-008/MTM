@@ -53,6 +53,7 @@ export const SignUpForm = () => {
         // boxShadow={'lg'}
         boxShadow={'0 4px 12px rgb(0 0 0 / 10%)'}
         p={8}
+        mt={'25px'}
       >
         <form onSubmit={handleSubmit}>
           <div>
@@ -107,7 +108,7 @@ export const SignUpForm = () => {
                 />
               </InputGroup>
               <br />
-              <Button type='Submit'>Sign Up</Button>
+              <Button type="Submit" bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}>Sign Up</Button>
             </FormControl>
           </Stack>
         </form>

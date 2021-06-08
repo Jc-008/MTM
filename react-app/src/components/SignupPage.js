@@ -30,7 +30,11 @@ export default function SignUpPage() {
         align={"center"}
         justify={"center"}
         mb={'50px'}
+        h={'82vh'}
       >
+        <Box p={20}>
+          <Text> This is the left side of the page</Text>
+        </Box>
         <Box>
           {/* <Text>This is where the login form will be</Text> */}
           <SignUpForm />
