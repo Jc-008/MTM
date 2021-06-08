@@ -4,16 +4,15 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import * as sessionActions from "../../store/session"
 import {
+  Box,
   Button,
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
   InputGroup,
   isRequired,
   Stack,
-  useOutsideClick
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 export const SignUpForm = () => {
@@ -46,67 +45,74 @@ export const SignUpForm = () => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        {errors.map((error, idx) => <span key={idx}>{error}</span>)}
-      </div>
-      <Stack spacing={3}>
-        <FormControl isRequired>
-          <FormLabel>First name</FormLabel>
-          <InputGroup>
-            <Input
-              // ref={initialRef}
-              placeholder="First name"
-              type='text'
-              value={fname}
-              onChange={(e) => setfname(e.target.value)}
-            />
-          </InputGroup>
-          <FormLabel>Last name</FormLabel>
-          <InputGroup>
-            <Input
-              // ref={initialRef}
-              placeholder="Last name"
-              type='text'
-              value={lname}
-              onChange={(e) => setlname(e.target.value)}
-            />
-          </InputGroup>
-          <FormLabel>Email</FormLabel>
-          <InputGroup>
-            <Input
-              // ref={initialRef}
-              placeholder="Email"
-              type='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </InputGroup>
-          <FormLabel>Password</FormLabel>
-          <InputGroup>
-            <Input
-              // ref={initialRef}
-              placeholder="Password"
-              type='password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </InputGroup>
-          <FormLabel>Confirm Password</FormLabel>
-          <InputGroup>
-            <Input
-              // ref={initialRef}
-              placeholder="Confirm Password"
-              type='password'
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-          </InputGroup>
-          <br />
-          <Button type='Submit'>Sign Up</Button>
-        </FormControl>
-      </Stack>
-    </form>
+    <>
+      <Box
+        w={'450px'}
+        rounded={'lg'}
+        // bg={useColorModeValue('white', 'gray.700')}
+        // boxShadow={'lg'}
+        boxShadow={'0 4px 12px rgb(0 0 0 / 10%)'}
+        p={8}
+      >
+        <form onSubmit={handleSubmit}>
+          <div>
+            {errors.map((error, idx) => <span key={idx}>{error}</span>)}
+          </div>
+          <Stack spacing={3}>
+            <FormControl isRequired>
+              <FormLabel>First name</FormLabel>
+              <InputGroup>
+                <Input
+                  placeholder="First name"
+                  type='text'
+                  value={fname}
+                  onChange={(e) => setfname(e.target.value)}
+                />
+              </InputGroup>
+              <FormLabel>Last name</FormLabel>
+              <InputGroup>
+                <Input
+                  placeholder="Last name"
+                  type='text'
+                  value={lname}
+                  onChange={(e) => setlname(e.target.value)}
+                />
+              </InputGroup>
+              <FormLabel>Email</FormLabel>
+              <InputGroup>
+                <Input
+                  placeholder="Email"
+                  type='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </InputGroup>
+              <FormLabel>Password</FormLabel>
+              <InputGroup>
+                <Input
+                  placeholder="Password"
+                  type='password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </InputGroup>
+              <FormLabel>Confirm Password</FormLabel>
+              <InputGroup>
+                <Input
+                  // ref={initialRef}
+                  placeholder="Confirm Password"
+                  type='password'
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </InputGroup>
+              <br />
+              <Button type='Submit'>Sign Up</Button>
+            </FormControl>
+          </Stack>
+        </form>
+      </Box>
+    </>
   );
 };
 
