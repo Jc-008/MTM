@@ -50,7 +50,7 @@ const NavBar = () => {
         </Flex>
         {/* <Button href='' w="100%" h="25px" textAlign="center" paddingTop={4} fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Try MTM</Button> */}
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px">
-          <Button href='' w='100px' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}>Try MTM</Button>
+          <Button w='100px' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}><a href="/sign-up">Try MTM</a></Button>
         </Flex>
       </Grid >
     </>
