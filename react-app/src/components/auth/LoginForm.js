@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // import { login } from "../../store/session";
 import * as sessionActions from "../../store/session"
 import {
@@ -22,6 +22,7 @@ export function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
 
 
   const handleSubmit = async (e) => {
@@ -41,9 +42,9 @@ export function LoginForm() {
     if (dispatched.errors) {
       setErrors(dispatch.errors)
     }
-    // else {
-    //   History.push('/')           // want to push to user's homepage after logging in. '/search'
-    // }
+    else {
+      history.push('/search')           // want to push to user's homepage after logging in. '/search'
+    }
 
   }
 
