@@ -38,7 +38,13 @@ export function LoginForm() {
     const password = 'password'
     const dispatched = await dispatch(sessionActions.login(email, password))
 
-    if (dispatched.errors) setErrors(dispatch.errors)
+    if (dispatched.errors) {
+      setErrors(dispatch.errors)
+    }
+    // else {
+    //   History.push('/')           // want to push to user's homepage after logging in. '/search'
+    // }
+
   }
 
   return (
