@@ -11,6 +11,7 @@ import SplashPage from "./components/SplashPage"
 import Footer from './components/Footer'
 import BusinessOwnerLogin from "./components/BusinessOwnerLogin";
 import { authenticate } from "./store/session";
+import SignUpPage from "./components/SignupPage";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -45,7 +46,7 @@ function App() {
         </Route>
 
         <Route path="/sign-up" exact={true}>
-          <SignUpForm />
+          <SignUpPage />
         </Route>
 
         <ProtectedRoute path="/users" exact={true} >
