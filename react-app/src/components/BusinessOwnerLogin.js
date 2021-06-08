@@ -142,7 +142,7 @@ export default function BusinessOwnerLogin() {
               fontSize={'30px'}
             >
               Not a member yet?
-          </Text>
+            </Text>
             <Text
               align={"center"}
               justify={"center"}
@@ -150,7 +150,7 @@ export default function BusinessOwnerLogin() {
               mb={'8px'}
             >
               Join now
-          </Text>
+            </Text>
             <Button
               type='Submit'
               bg="'#f7f7f7'"

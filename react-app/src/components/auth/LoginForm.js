@@ -46,7 +46,7 @@ export function LoginForm() {
       <Box
         w={'450px'}
         rounded={'lg'}
-        bg={useColorModeValue('white', 'gray.700')}
+        // bg={useColorModeValue('white', 'gray.700')}
         // boxShadow={'lg'}
         boxShadow={'0 4px 12px rgb(0 0 0 / 10%)'}
         p={8}

@@ -5,6 +5,7 @@ import { signUp } from '../../store/session';
 import * as sessionActions from "../../store/session"
 import {
   Box,
+  Flex,
   Button,
   FormControl,
   FormLabel,
@@ -51,15 +52,17 @@ export const SignUpForm = () => {
         rounded={'lg'}
         // bg={useColorModeValue('white', 'gray.700')}
         // boxShadow={'lg'}
-        boxShadow={'0 4px 12px rgb(0 0 0 / 10%)'}
+        boxShadow={'0 4px 12px rgb(0 0 0 / 24%)'}
         p={8}
+        mt={'15px'}
+        h={'525px'}
       >
         <form onSubmit={handleSubmit}>
           <div>
             {errors.map((error, idx) => <span key={idx}>{error}</span>)}
           </div>
           <Stack spacing={3}>
-            <FormControl isRequired>
+            <FormControl mb={'15px'} isRequired>
               <FormLabel>First name</FormLabel>
               <InputGroup>
                 <Input
@@ -107,7 +110,12 @@ export const SignUpForm = () => {
                 />
               </InputGroup>
               <br />
-              <Button type='Submit'>Sign Up</Button>
+              <Flex
+                align={"center"}
+                justify={"center"}
+              >
+                <Button type="Submit" bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}>Try for free</Button>
+              </Flex>
             </FormControl>
           </Stack>
         </form>
