@@ -5,7 +5,7 @@ gym_to_class_sessions = db.Table(
     db.Column(
         'gym_id',
         db.Integer,
-        db.ForeignKey('gym.id'),
+        db.ForeignKey('gyms.id'),
         primary_key=True
     ),
     db.Column(

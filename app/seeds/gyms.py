@@ -111,5 +111,5 @@ def seed_gyms():
 
 
 def undo_gyms():
-    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE gyms RESTART IDENTITY CASCADE;')
     db.session.commit()
