@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
 import LogoutButton from './auth/LogoutButton';
 import SearchBarForm from '../components/SearchbarForm'
 import SearchBarFormPt2 from '../components/SearchbarFormPt2'
@@ -24,6 +25,20 @@ import {
 
 
 const NavBar = () => {
+  const sessionUser = useSelector(state => state.session.user);
+
+  let BtnVisibility;
+
+  if (sessionUser) {          // if user is logged in
+    BtnVisibility = (
+      <LogoutButton user={sessionUser} />
+    )
+  } else {                      // if user is NOT LOGGED in
+    BtnVisibility = (
+      <Button w='100px' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}><a href="/sign-up">Try MTM</a></Button>
+    )
+  }
+
   return (
     <>
       <Grid templateColumns="repeat(10, 1fr)" gap={.7} bg="#FFFFF" minHeight={'64px'} >
@@ -50,7 +65,8 @@ const NavBar = () => {
         </Flex>
         {/* <Button href='' w="100%" h="25px" textAlign="center" paddingTop={4} fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Try MTM</Button> */}
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px">
-          <Button w='100px' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}><a href="/sign-up">Try MTM</a></Button>
+          {/* <Button w='100px' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}><a href="/sign-up">Try MTM</a></Button> */}
+          {BtnVisibility}
         </Flex>
       </Grid >
     </>
