@@ -27,15 +27,35 @@ import {
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
 
-  let BtnVisibility;
+  let TryMTMSpace;
 
   if (sessionUser) {          // if user is logged in
-    BtnVisibility = (
+    TryMTMSpace = (
       <LogoutButton user={sessionUser} />
+
     )
   } else {                      // if user is NOT LOGGED in
-    BtnVisibility = (
+    TryMTMSpace = (
       <Button w='100px' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}><a href="/sign-up">Try MTM</a></Button>
+    )
+  }
+
+  let loggedInProfileBtn;
+
+  if (sessionUser) {
+    loggedInProfileBtn = (
+      <Button
+        rounded='25px'
+        colorScheme="white"
+        variant="ghost"
+      
+      >
+        <a href='/'><i className="fa fa-user"></i></a>
+      </Button >
+    )
+  } else {
+    loggedInProfileBtn = (
+      <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>Locations</Link>
     )
   }
 
@@ -59,14 +79,16 @@ const NavBar = () => {
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" _hover={{ fontWeight: "bold", bg: "#f7f7f7" }}>
           <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }} >How it works</Link>
           {/* <Link href='' textAlign="center" fontWeight="500" _hover={{ fontWeight: "bold", bg: "#dedede" }} >How it works</Link> */}
+
         </Flex>
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" _hover={{ fontWeight: "bold", bg: "#f7f7f7" }}>
-          <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>Locations</Link>
+          {/* <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>Locations</Link> */}
+          {loggedInProfileBtn}
         </Flex>
         {/* <Button href='' w="100%" h="25px" textAlign="center" paddingTop={4} fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Try MTM</Button> */}
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px">
           {/* <Button w='100px' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}><a href="/sign-up">Try MTM</a></Button> */}
-          {BtnVisibility}
+          {TryMTMSpace}
         </Flex>
       </Grid >
     </>

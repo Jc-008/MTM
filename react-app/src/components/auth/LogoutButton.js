@@ -16,15 +16,13 @@ const LogoutButton = () => {
   return (
     <Button
       onClick={onLogout}
-      _hover={{ color: "white", bg: "gray.500" }}
+      _hover={{ color: "white", fontWeight: "bold", bg: '#dedede' }}
       variant={"outline"}
       borderColor="#d6d6d6"
+      colorScheme="white"
     >
       Logout
     </Button>
-    // <Button onClick={onLogout}>
-    //   Logout
-    // </Button>
   )
 };
 
