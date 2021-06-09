@@ -16,7 +16,11 @@ class ClassSession(db.Model):
     # need to double check line 10 and line 17 to make sure its working
 
     gyms = db.relationship('Gym', back_populates='classSessions')
-    userFavs = db.relationship('User', secondary=favorites)
+    userFavs = db.relationship(
+        'User', secondary=favorites, back_populates='class_sessions')
+    classToGyms = db.relationship('Gym', secondary=gym_to_class_sessions, back_populates='class_sessions'
+    # Added line 21 after creation of joins table gym_to_class_sessions
+
 
     def to_dict(self):
         return {

@@ -17,7 +17,9 @@ class User(db.Model, UserMixin):
     is_owner = db.Column(db.Boolean(), nullable=False)
 
     gyms = db.relationship("Gym", back_populates="user")
-    favSessions = db.relationship("ClassSession", secondary=favorites)
+    favSessions = db.relationship(
+        "ClassSession", secondary=favorites, back_populates='users')
+    # Added back_populates on line 21
 
     @property
     def password(self):

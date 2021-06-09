@@ -13,6 +13,9 @@ class Gym(db.Model):
 
     user = db.relationship("User", back_populates="gyms")
     classSessions = db.relationship("ClassSession", back_populates="gyms")
+    gymClasses = db.relationship(
+        'ClassSession', secondary=gym_to_class_sessions, back_populates='gyms')
+    # Added line 17 after creation of joins table gym_to_class_sessions
 
     def to_dict(self):
         return {
