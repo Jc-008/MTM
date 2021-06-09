@@ -27,14 +27,45 @@ import {
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
 
-  let BtnVisibility;
+
+  let RightLeftNavBar;
 
   if (sessionUser) {          // if user is logged in
-    BtnVisibility = (
-      <LogoutButton user={sessionUser} />
+    RightLeftNavBar = (
+      <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>Credits</Link>
+      // <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>{{User.available_credit}}Credits</Link>
     )
   } else {                      // if user is NOT LOGGED in
-    BtnVisibility = (
+    RightLeftNavBar = (
+      <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }} >How it works</Link>
+    )
+  }
+
+
+  let RightMiddleNavBar;
+
+  if (sessionUser) {
+    RightMiddleNavBar = (
+      <Button rounded='25px' colorScheme="white" variant="ghost">
+        <a href='/'><i className="fa fa-user"></i></a>
+      </Button >
+    )
+  } else {
+    RightMiddleNavBar = (
+      <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>Locations</Link>
+    )
+  }
+
+
+  let RightFarRightNavBar;
+
+  if (sessionUser) {          // if user is logged in
+    RightFarRightNavBar = (
+      <LogoutButton user={sessionUser} />
+
+    )
+  } else {                      // if user is NOT LOGGED in
+    RightFarRightNavBar = (
       <Button w='100px' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}><a href="/sign-up">Try MTM</a></Button>
     )
   }
@@ -57,16 +88,19 @@ const NavBar = () => {
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" _hover={{ fontWeight: "bold", bg: "#f7f7f7" }}>
-          <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }} >How it works</Link>
-          {/* <Link href='' textAlign="center" fontWeight="500" _hover={{ fontWeight: "bold", bg: "#dedede" }} >How it works</Link> */}
+          {RightLeftNavBar}
+          {/* <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }} >How it works</Link> */}
         </Flex>
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" _hover={{ fontWeight: "bold", bg: "#f7f7f7" }}>
-          <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>Locations</Link>
+          {RightMiddleNavBar}
+          {/* <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>Locations</Link> */}
+
         </Flex>
         {/* <Button href='' w="100%" h="25px" textAlign="center" paddingTop={4} fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >Try MTM</Button> */}
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px">
+          {RightFarRightNavBar}
           {/* <Button w='100px' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}><a href="/sign-up">Try MTM</a></Button> */}
-          {BtnVisibility}
+
         </Flex>
       </Grid >
     </>
