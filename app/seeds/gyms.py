@@ -104,7 +104,8 @@ gymsList = [
 
 def seed_gyms():
     for gym in gymsList:
-        selectedGym = Gym(name=gym['name'], address=gym['address'])
+        # selectedGym = Gym(name=gym['name'], address=gym['address'])
+        selectedGym = Gym(**gym)
         db.session.add(selectedGym)
 
     db.session.commit()
