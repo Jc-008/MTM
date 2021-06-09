@@ -8,8 +8,15 @@ def seed_users():
 
     demo = User(email='demo@aa.io', first_name='Demo', last_name='This', zipcode='10001',
                 password='password', available_credit=24, is_owner=False)
-
     db.session.add(demo)
+
+    cap = User(email='CapAmerica@gmail.com', first_name='Steve', last_name='Rogers', zipcode='10036',
+               password='ogAvenger', available_credit=64, is_owner=False)
+    db.session.add(cap)
+
+    user1_test = User(email='warMachine@gmail.com', first_name='James', last_name='Rhodes', zipcode='10021',
+                      password='warMachine1', available_credit=24, is_owner=False)
+    db.session.add(user1_test)
 
     db.session.commit()
 
