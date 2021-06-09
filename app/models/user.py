@@ -14,10 +14,13 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(25), nullable=False)
     zipcode = db.Column(db.String(5), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
+    available_credit = db.Column(db.Integer, nullable=False)
     is_owner = db.Column(db.Boolean(), nullable=False)
 
     gyms = db.relationship("Gym", back_populates="user")
-    favSessions = db.relationship("ClassSession", secondary=favorites)
+    favSessions = db.relationship(
+        "ClassSession", secondary=favorites, back_populates='userFavs')
+    # Added back_populates on line 21
 
     @property
     def password(self):
@@ -36,6 +39,7 @@ class User(db.Model, UserMixin):
             "first_name": self.first_name,
             "last_name": self.last_name,
             "zipcode": self.zipcode,
+            'available_credit': self.available_credit,
             # "username": self.username,
             # "email": self.email,
         }
