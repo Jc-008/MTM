@@ -54,6 +54,10 @@ function App() {
           <UserHomePage />
         </Route>
 
+        <Route path="/results" exact={true}>
+          {/* < /> */}
+        </Route>
+
         <ProtectedRoute path="/users" exact={true} >
           <UsersList />
         </ProtectedRoute>

@@ -30,7 +30,12 @@ export function LoginForm() {
     setErrors([]);
     const dispatched = await dispatch(sessionActions.login(email, password))
 
-    if (dispatched.errors) setErrors(dispatch.errors)
+    if (dispatched.errors) {
+      setErrors(dispatch.errors)
+    }
+    else {
+      history.push('/search')           // want to push to user's homepage after logging in. '/search'
+    }
   };
 
   const handleDemo = async (e) => {
