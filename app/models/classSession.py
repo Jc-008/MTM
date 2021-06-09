@@ -1,5 +1,6 @@
 from .db import db
 from .favorite import favorites
+from .gymToClassSessions import gym_to_class_sessions
 
 
 class ClassSession(db.Model):

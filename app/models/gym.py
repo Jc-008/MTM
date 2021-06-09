@@ -1,4 +1,5 @@
 from .db import db
+from .gymToClassSessions import gym_to_class_sessions
 
 
 class Gym(db.Model):
@@ -7,10 +8,9 @@ class Gym(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150), nullable=False)
     address = db.Column(db.String(255), nullable=False, unique=True)
-    phone_number = db.Column(db.String(10))
-    hours_of_operation = db.Column(db.String(255))
+    phone_number = db.Column(db.String(13))
+    # hours_of_operation = db.Column(db.String(255))
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-
     user = db.relationship("User", back_populates="gyms")
     classSessions = db.relationship("ClassSession", back_populates="gyms")
     gymClasses = db.relationship(
@@ -23,6 +23,6 @@ class Gym(db.Model):
             "name": self.name,
             "address": self.address,
             "phone_number": self.phone_number,
-            "hours_of_operation": self.hours_of_operation,
+            # "hours_of_operation": self.hours_of_operation,
             "users": self.owner_id
         }
