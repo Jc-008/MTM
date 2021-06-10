@@ -1,16 +1,16 @@
-export const FETCH_CLASSES = 'FETCH_CLASSES';
-export const FETCH_CLASS = 'FETCH_CLASS';
+export const GET_CLASSES = 'GET_CLASSES';
+export const GET_CLASS = 'GET_CLASS';
 export const SET_CLASSES = 'SET_CLASSES';
 export const SET_CLASS = 'SET_CLASS';
 
 
-export const fetchClasses = (classSessions) => ({
-  type: FETCH_CLASSES,
+export const getClasses = (classSessions) => ({
+  type: GET_CLASSES,
   payload: classSessions
 })
 
-export const fetchClass = (classSession) => ({
-  type: FETCH_CLASSES,
+export const getClass = (classSession) => ({
+  type: GET_CLASSES,
   payload: classSession
 })
 
@@ -25,7 +25,7 @@ export const getAllClasses = () => async (dispatch) => {
   }
 
   const classSessions = await response.json()
-  dispatch(fetchClasses(classSessions))
+  dispatch(getClasses(classSessions))
   return classSessions
 
 }
@@ -40,7 +40,23 @@ export const getOneClass = () => async (dispatch) => {
   }
 
   const classSession = await response.json()
-  dispatch(fetchClasses(classSession))
+  dispatch(getClass(classSession))
   return classSession
 
+}
+
+
+const initalState = {
+  classSessions = {},
+  classSession = {},
+}
+
+
+export default function classSessionReducer(state = initalState, action) {
+  switch (action.type) {
+    case GET_CLASSES:
+      return {
+        classSessions: action.payload
+      }
+  }
 }
