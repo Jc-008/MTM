@@ -21,7 +21,7 @@ export const searchFunc = (query) => async dispatch => {      // param is the se
 }
 
 
-//-------------------REDUCER--------------------------//
+//-------------------REDUCER--------------------------//          // will need to work on this bc changed routes
 const searchReducer = (state = {}, action) => {
   let newState;
 
