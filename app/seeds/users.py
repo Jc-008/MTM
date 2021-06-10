@@ -14,9 +14,13 @@ def seed_users():
                password='ogAvenger', available_credit=64, is_owner=False)
     db.session.add(cap)
 
-    user1_test = User(email='warMachine@gmail.com', first_name='James', last_name='Rhodes', zipcode='10021',
+    warMachine = User(email='warMachine@gmail.com', first_name='James', last_name='Rhodes', zipcode='10021',
                       password='warMachine1', available_credit=24, is_owner=False)
-    db.session.add(user1_test)
+    db.session.add(warMachine)
+
+    hulk = User(email='hulk@gmail.com', first_name='Bruce', last_name='Banner', zipcode='10019',
+                      password='hulkSmash', available_credit=24, is_owner=True)
+    db.session.add(hulk)
 
     db.session.commit()
 

@@ -46,8 +46,7 @@ export function LoginForm() {
 
     if (dispatched.errors) {
       setErrors(dispatch.errors)
-    }
-    else {
+    } else {
       history.push('/search')           // want to push to user's homepage after logging in. '/search'
     }
 
@@ -66,7 +65,7 @@ export function LoginForm() {
       >
         <form onSubmit={handleSubmit}>
           <div>
-            {errors.map((error, idx) => <span key={idx}>{error}</span>)}
+            {errors?.map((error, idx) => <span key={idx}>{error}</span>)}
           </div>
           <Stack spacing={3}>
             <FormControl isRequired>
