@@ -15,7 +15,7 @@ import {
   Container,
   InputGroup,
   FormControl,
-  useDisclosure
+  useDisclosure,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FaRegFileExcel } from 'react-icons/fa';
@@ -39,8 +39,8 @@ function UserMemberShipPage() {
         <Box
           name={'left-box'}
           h={'97vh'}
-          w={'550px'}
-          bg={'lightblue'}
+          w={'750px'}
+        // bg={'lightblue'}
         >
           <Flex
             align={"center"}
@@ -63,6 +63,16 @@ function UserMemberShipPage() {
           >
             zipcode: {user.zipcode}
           </Text>
+          <Button
+            rounded={'xl'}
+            bg='#0055FF'
+            color='white'
+            _hover={{ bg: '#004de6' }}
+            mt={'25px'}
+            ml={'208px'}
+          >
+            Edit Details
+          </Button>
         </Box>
         <Flex
           direction={'column'}
