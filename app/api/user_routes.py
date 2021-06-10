@@ -1,7 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.forms import UpdateForm
-from app.models import User
+from app.models import User, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -23,14 +23,14 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@user_routes.route('/<int:id>/')
+@user_routes.route('/<int:id>')
 @login_required
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
 
-@user_routes.route('/', method=['PUT'])
+@user_routes.route('/', methods=['PUT'])
 # @login_required
 def update_user_details():
     form = UpdateForm()

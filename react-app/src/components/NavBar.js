@@ -60,7 +60,7 @@ const NavBar = () => {
   if (sessionUser) {
     RightMiddleNavBar = (
       <Button rounded='25px' colorScheme="white" variant="ghost">
-        <a href='/'><i className="fa fa-user"></i></a>
+        <a href='/membership'><i className="fa fa-user"></i></a>
       </Button >
     )
   } else {

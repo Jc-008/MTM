@@ -58,7 +58,7 @@ function App() {
         <Route path="/results" exact={true}>
           {/* < /> */}
         </Route>
-        <Route path="/results" exact={true}>
+        <Route path="/membership" exact={true}>
           <UserMemberShipPage />
         </Route>
 
