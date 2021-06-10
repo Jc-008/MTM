@@ -31,7 +31,7 @@ export const getAllGyms = () => async (dispatch) => {
 }
 
 
-export const getOneGym = () => async (dispatch) => {
+export const getOneGym = (id) => async (dispatch) => {
   const response = await fetch(`/api/gyms/${id}`)
 
   if (!response.ok) {
@@ -56,12 +56,12 @@ export default function gymReducer(state = initialState, action) {
   let newState;
 
   switch (action.type) {
-    case GET_CLASSES:
+    case GET_GYMS:
       newState = Object.assign({}, state)
       newState.gyms = action.payload
       return newState
 
-    case GET_ONE_CLASS:
+    case GET_ONE_GYM:
       newState = Object.assign({}, state)
       newState.gyms = action.payload
       return newState
@@ -69,3 +69,4 @@ export default function gymReducer(state = initialState, action) {
     default:
       return state;
   }
+}
