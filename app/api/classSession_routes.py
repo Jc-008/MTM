@@ -14,6 +14,15 @@ def classSessions():
     Get all classes in ClassSession model
     '''
     classSessions = ClassSession.query.all()
-    return jsonify([classSession.to_dict() for classSession in classSessions])
-    # return {"classSessions": [classSession.to_dict() for classSession in classSessions]}
+    return {"classSessions": [classSession.to_dict() for classSession in classSessions]}
+    # return jsonify([classSession.to_dict() for classSession in classSessions])
 
+
+@classSession_routes.route('/<int:id>/')
+@login_required
+def get_one_class(id):
+    classSession = ClassSession.query.get(id)
+    return classSession.to_dict()
+
+
+# -----------------------------------------------------------------------------------#

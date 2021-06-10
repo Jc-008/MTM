@@ -1,5 +1,5 @@
 export const GET_CLASSES = 'GET_CLASSES';
-export const GET_CLASS = 'GET_CLASS';
+export const GET_ONE_CLASS = 'GET_CLASS';
 export const SET_CLASSES = 'SET_CLASSES';
 export const SET_CLASS = 'SET_CLASS';
 
@@ -9,8 +9,8 @@ export const getClasses = (classSessions) => ({
   payload: classSessions
 })
 
-export const getClass = (classSession) => ({
-  type: GET_CLASSES,
+export const getAClass = (classSession) => ({
+  type: GET_ONE_CLASS,
   payload: classSession
 })
 
@@ -31,8 +31,8 @@ export const getAllClasses = () => async (dispatch) => {
 }
 
 
-export const getOneClass = () => async (dispatch) => {
-  const response = await fetch('/api/classSession/${id}/')
+export const getOneClass = (id) => async (dispatch) => {
+  const response = await fetch(`/api/classSession/${id}/`)
 
   if (!response.ok) {
     const errors = await response.json()
@@ -40,23 +40,48 @@ export const getOneClass = () => async (dispatch) => {
   }
 
   const classSession = await response.json()
-  dispatch(getClass(classSession))
+  dispatch(getAClass(classSession))
   return classSession
 
 }
 
-
-const initalState = {
-  classSessions = {},
-  classSession = {},
+//----------------------------------------------------------------------------------//
+const initialState = {
+  classSessions: {}
+  // classSession = {},
 }
 
+// Check the reducer below, don't think it is correct
 
-export default function classSessionReducer(state = initalState, action) {
+export default function classSessionReducer(state = initialState, action) {
+  let newState;
+
   switch (action.type) {
     case GET_CLASSES:
-      return {
-        classSessions: action.payload
-      }
+      newState = Object.assign({}, state)
+      newState.classSessions = action.payload
+      return newState
+
+    case GET_ONE_CLASS:
+      newState = Object.assign({}, state)
+      newState.classSessions = action.payload
+      return newState
+
+    default:
+      return state;
   }
 }
+
+  // switch (action.type) {
+  //   case GET_CLASSES:
+  //     return {
+  //       classSessions: action.payload
+  //     }
+  //   case GET_ONE_CLASS:
+  //     return {
+  //       classSessions: action.payload
+  //     }
+
+
+  // }
+// }
