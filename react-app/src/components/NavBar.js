@@ -27,6 +27,19 @@ import {
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
 
+  let searchbarVisibilityLeft
+  if (sessionUser) {
+    searchbarVisibilityLeft = (
+      <SearchBarForm />
+    )
+  }
+  let searchbarVisibilityRight
+  if (sessionUser) {
+    searchbarVisibilityRight = (
+      <SearchBarFormPt2 />
+    )
+  }
+
 
   let RightLeftNavBar;
 
@@ -78,10 +91,12 @@ const NavBar = () => {
         </Flex>
         {/* <Flex w="100%" h="55px" /> */}
         <Flex w="100%" h="55px" mt={'-8px'}>
-          <SearchBarForm />
+          {searchbarVisibilityLeft}
+          {/* <SearchBarForm /> */}
         </Flex>
         <Flex w="100%" h="55px" mt={'-8px'} >
-          <SearchBarFormPt2 />
+          {searchbarVisibilityRight}
+          {/* <SearchBarFormPt2 /> */}
         </Flex>
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />
