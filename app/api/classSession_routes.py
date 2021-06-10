@@ -8,7 +8,7 @@ classSession_routes = Blueprint(
 
 
 @classSession_routes.route('/')
-@login_required
+# @login_required
 def classSessions():
     '''
     Get all classes in ClassSession model
@@ -19,7 +19,7 @@ def classSessions():
 
 
 @classSession_routes.route('/<int:id>/')
-@login_required
+# @login_required
 def get_one_class(id):
     classSession = ClassSession.query.get(id)
     return classSession.to_dict()
