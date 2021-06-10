@@ -17,14 +17,14 @@ export const fetchClass = (classSession) => ({
 //---------------------------------------------------------------------------------------//
 
 export const getAllClasses = () => async (dispatch) => {
-  const response = await fetch('/api/classes')
+  const response = await fetch('/api/classSessions/')
 
   if (!response.ok) {
     const errors = await response.json()
     return { errors }
   }
 
-  const classes = await response.json()
+  const classSessions = await response.json()
   dispatch(fetchClasses(classSessions))
   return classSessions
 
@@ -32,10 +32,15 @@ export const getAllClasses = () => async (dispatch) => {
 
 
 export const getOneClass = () => async (dispatch) => {
-  const response = await fetch('/api/classes/${')
+  const response = await fetch('/api/classSession/${id}/')
 
   if (!response.ok) {
     const errors = await response.json()
     return { errors }
   }
+
+  const classSession = await response.json()
+  dispatch(fetchClasses(classSession))
+  return classSession
+
 }
