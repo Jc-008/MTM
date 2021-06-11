@@ -10,6 +10,7 @@ class Gym(db.Model):
     address = db.Column(db.String(255), nullable=False, unique=True)
     phone_number = db.Column(db.String(13))
     # hours_of_operation = db.Column(db.String(255))
+    gym_url_image = db.Column(db.String(1000))
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     user = db.relationship("User", back_populates="gyms")
@@ -25,6 +26,7 @@ class Gym(db.Model):
             "name": self.name,
             "address": self.address,
             "phone_number": self.phone_number,
+            "gym_url_image": self.gym_url_image,
+            "user": self.owner_id,
             # "hours_of_operation": self.hours_of_operation,
-            "users": self.owner_id
         }
