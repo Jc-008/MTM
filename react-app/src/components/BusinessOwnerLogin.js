@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // import { login } from "../../store/session";
 import * as sessionActions from "../store/session"
 import {
@@ -24,6 +24,7 @@ export default function BusinessOwnerLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
 
 
   const handle_Business_Submit = async (e) => {           // Only changed names for this
@@ -31,16 +32,27 @@ export default function BusinessOwnerLogin() {
     setErrors([]);
     const dispatched = await dispatch(sessionActions.login(email, password))
 
-    if (dispatched.errors) setErrors(dispatch.errors)
+    if (dispatched.errors) {
+      setErrors(dispatch.errors)
+    }
+    else {
+      history.push('/membership')           // want to push to user's homepage after logging in. '/search'
+    }
   };
+
 
   const handle_Business_Demo = async (e) => {           // Only changed names for this
     e.preventDefault();
-    const email = 'demo@aa.io';
-    const password = 'password'
+    const email = 'hulk@gmail.com';
+    const password = 'hulkSmash'
     const dispatched = await dispatch(sessionActions.login(email, password))
 
-    if (dispatched.errors) setErrors(dispatch.errors)
+
+    if (dispatched.errors) {
+      setErrors(dispatch.errors)
+    } else {
+      history.push('/membership')
+    }
   }
 
   return (
@@ -73,7 +85,7 @@ export default function BusinessOwnerLogin() {
           </Text>
           <form onSubmit={handle_Business_Submit}>
             <div>
-              {errors.map((error, idx) => <span key={idx}>{error}</span>)}
+              {errors?.map((error, idx) => <span key={idx}>{error}</span>)}
             </div>
             <Stack spacing={3}>
               <FormControl isRequired>

@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import BusinessOwnerLogin from "./components/BusinessOwnerLogin";
 import SignUpPage from "./components/SignupPage";
 import UserHomePage from './components/UserHomePage';
+import UserMemberShipPage from "./components/UserMemberShipPage";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -56,6 +57,9 @@ function App() {
 
         <Route path="/results" exact={true}>
           {/* < /> */}
+        </Route>
+        <Route path="/membership" exact={true}>
+          <UserMemberShipPage />
         </Route>
 
         <ProtectedRoute path="/users" exact={true} >
