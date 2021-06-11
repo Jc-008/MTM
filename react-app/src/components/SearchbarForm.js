@@ -40,7 +40,7 @@ const SearchBarForm = () => {
       >
         <InputGroup>
           <Input
-            placeholder="Find a gym or class"
+            placeholder="Find a gym"
             rounded={'25px'}
             // borderRight={'hidden'}
             bg="white"
