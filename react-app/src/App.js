@@ -13,6 +13,7 @@ import BusinessOwnerLogin from "./components/BusinessOwnerLogin";
 import SignUpPage from "./components/SignupPage";
 import UserHomePage from './components/UserHomePage';
 import UserMemberShipPage from "./components/UserMemberShipPage";
+import GymPages from "./components/GymPages";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -55,11 +56,15 @@ function App() {
           <UserHomePage />
         </Route>
 
-        <Route path="/results" exact={true}>
-          {/* < /> */}
-        </Route>
+        {/* <Route path="/results" exact={true}>
+          < />
+        </Route> */}
         <Route path="/membership" exact={true}>
           <UserMemberShipPage />
+        </Route>
+
+        <Route path="/gyms/:id" exact={true}>
+          <GymPages />
         </Route>
 
         <ProtectedRoute path="/users" exact={true} >

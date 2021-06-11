@@ -7,17 +7,8 @@ import SignUpForm from "./auth/SignUpForm";
 import {
   Box,
   Flex,
-  Link,
   Text,
   Image,
-  Input,
-  Stack,
-  Button,
-  FormLabel,
-  InputGroup,
-  FormControl,
-  useColorModeValue,
-  Container,
 } from "@chakra-ui/react";
 
 
