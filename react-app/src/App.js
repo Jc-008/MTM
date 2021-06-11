@@ -18,15 +18,12 @@ import { authenticate } from "./store/session";
 
 function App() {
   const user = useSelector(state => state.session.user)
-  const [loaded, setLoaded] = useState(false);
+  const loaded = useSelector(state => state.session.loaded);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      await dispatch(authenticate());
-      setLoaded(true);
-    })();
-  }, []);
+    dispatch(authenticate());
+  }, [dispatch]);
 
   if (!loaded) {
     return null;

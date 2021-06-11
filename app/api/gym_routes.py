@@ -14,7 +14,7 @@ def all_gyms():
     '''
     gyms = Gym.query.all()
     # return {"gyms": [gym.to_dict() for gym in gyms]}
-    return jsonify([gym.to_dict() for gym in gyms])
+    return {gym.id: gym.to_dict() for gym in gyms}
 
 
 @gym_routes.route('/<int:id>/')

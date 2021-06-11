@@ -31,25 +31,26 @@ export const getAllGyms = () => async (dispatch) => {
 }
 
 
-export const getOneGym = (id) => async (dispatch) => {
-  const response = await fetch(`/api/gyms/${id}`)
+// export const getOneGym = (id) => async (dispatch) => {
+//   const response = await fetch(`/api/gyms/${id}`)
 
-  if (!response.ok) {
-    const errors = await response.json()
-    return { errors }
-  }
+//   if (!response.ok) {
+//     const errors = await response.json()
+//     return { errors }
+//   }
 
-  const gym = await response.json()
-  dispatch(getAGym(gym))
-  return gym
+//   const gym = await response.json()
+//   dispatch(getAGym(gym))
+//   return gym
 
-}
+// }
 
 
 //----------------------------------------------------------------------------------//
 const initialState = {
-  // gyms: {},
-  // gym: {},
+  allGyms: {},
+  singleGym: null,
+  loaded: false,
   // classSession = {},
 }
 
@@ -60,15 +61,16 @@ export default function gymReducer(state = initialState, action) {
     case GET_GYMS:
       // newState = Object.assign({}, state)
       // newState.gyms = action.payload
-      newState = { ...state }
-      newState.gym = action.gym
+      // newState = { ...state }
+      // newState.allGyms = action.gyms
+
       // newState = action.gyms
-      return newState
+      return {...state, allGyms:{...action.gyms}, loaded: true }
 
     case GET_ONE_GYM:
       newState = { ...state }
-      newState.gym = action.gym
-      // newState = action.gyms
+      newState.singleGym = newState.allGyms[action.gym] || null
+
       return newState
 
     default:

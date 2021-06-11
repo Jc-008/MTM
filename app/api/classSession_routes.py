@@ -15,7 +15,7 @@ def classSessions():
     '''
     classSessions = ClassSession.query.all()
     # return {"classSessions": [classSession.to_dict() for classSession in classSessions]}
-    return jsonify([classSession.to_dict() for classSession in classSessions])
+    return {classSession.id: classSession.to_dict() for classSession in classSessions}
 
 
 @classSession_routes.route('/<int:id>/')
