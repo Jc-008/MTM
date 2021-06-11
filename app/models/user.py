@@ -40,6 +40,7 @@ class User(db.Model, UserMixin):
             "last_name": self.last_name,
             "zipcode": self.zipcode,
             'available_credit': self.available_credit,
+            'is_owner': self.is_owner,
             # "username": self.username,
             # "email": self.email,
         }

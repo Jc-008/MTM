@@ -33,6 +33,7 @@ const NavBar = () => {
       <SearchBarForm />
     )
   }
+
   let searchbarVisibilityRight
   if (sessionUser) {
     searchbarVisibilityRight = (
@@ -45,7 +46,7 @@ const NavBar = () => {
 
   if (sessionUser) {          // if user is logged in
     RightLeftNavBar = (
-      <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>Credits</Link>
+      <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>{sessionUser.available_credit} Credits</Link>
       // <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>{{User.available_credit}}Credits</Link>
     )
   } else {                      // if user is NOT LOGGED in

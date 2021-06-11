@@ -33,25 +33,38 @@ function UserMemberShipPage() {
     return null
   }
 
+
+  let ownerOrNot
+  if (user.is_owner) {
+    ownerOrNot = (
+      <Text mt={'50px'} ml={'25px'} fontSize={'25px'} fontWeight={'500'}>My Gym(s)</Text>
+    )
+  } else {
+    ownerOrNot = (
+      <Text mt={'50px'} ml={'25px'} fontSize={'25px'} fontWeight={'500'}>Past Classes</Text>
+    )
+  }
+
   return (
     <>
       <Flex>
         <Box
           name={'left-box'}
           h={'97vh'}
-          w={'750px'}
+          w={'1000px'}
           bg={'#f7f7f7'}
         // bg={'lightblue'}
         >
           <Flex
             align={"center"}
             justify={"center"}
-            mt={'225px'}
+            mt={'200px'}
           // direction={'row'}
           >
             <Text
               fontSize={'35px'}
               fontWeight={'600'}
+
             >
               {user.first_name} {user.last_name}
             </Text>
@@ -70,7 +83,7 @@ function UserMemberShipPage() {
             color='white'
             _hover={{ bg: '#004de6' }}
             mt={'25px'}
-            ml={'208px'}
+            ml={'300px'}
           >
             Edit Details
           </Button>
@@ -84,12 +97,12 @@ function UserMemberShipPage() {
           <Flex
             name={'right-box'}
             // bg={'lightpink'}
-            h={'500px'}
+            h={'650px'}
             direction={'column'}
             border={'1px solid #f7f7f7'}
           >
             <Text
-              mt={'50px'}
+              mt={'100px'}
               ml={'25px'}
               fontSize={'35px'}
               fontWeight={'500'}
@@ -105,9 +118,11 @@ function UserMemberShipPage() {
               textAlign={'center'}
               variant={"outline"}
               // borderColor="#d6d6d6"
-              border={'1px solid #f7f7f7'}
+              // border={'5px solid #f7f7f7'}
+              border={'2px solid #e0e0e0'}
               bg={'white'}
               ml={'130px'}
+              mt={'85px'}
             >
               <Heading fontSize={'30px'} fontFamily={'body'}>
                 Credit plan
@@ -130,15 +145,15 @@ function UserMemberShipPage() {
             h={'500px'}
             border={'1px solid #f7f7f7'}
           >
-            <Text
+            {/* <Text
               mt={'50px'}
               ml={'25px'}
               fontSize={'25px'}
               fontWeight={'500'}
             >
               Past Classes
-            </Text>
-
+            </Text> */}
+            {ownerOrNot}
 
           </Flex>
         </Flex>
