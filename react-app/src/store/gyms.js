@@ -61,13 +61,14 @@ export default function gymReducer(state = initialState, action) {
       // newState = Object.assign({}, state)
       // newState.gyms = action.payload
       newState = { ...state }
-      // newState.gym = action.gym
-      newState = action.gyms
+      newState.gym = action.gym
+      // newState = action.gyms
       return newState
 
     case GET_ONE_GYM:
       newState = { ...state }
       newState.gym = action.gym
+      // newState = action.gyms
       return newState
 
     default:
