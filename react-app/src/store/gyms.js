@@ -6,12 +6,12 @@ export const SET_ONE_CLASS = 'SET_ONE_CLASS';
 
 export const getGyms = (gyms) => ({
   type: GET_GYMS,
-  payload: gyms
+  gyms
 })
 
 export const getAGym = (gym) => ({
   type: GET_ONE_GYM,
-  payload: gym
+  gym
 })
 
 //---------------------------------------------------------------------------------------//
@@ -25,7 +25,7 @@ export const getAllGyms = () => async (dispatch) => {
   }
 
   const gyms = await response.json()
-  dispatch(getAllGyms(gyms))
+  dispatch(getGyms(gyms))
   return gyms
 
 }
@@ -40,7 +40,7 @@ export const getOneGym = (id) => async (dispatch) => {
   }
 
   const gym = await response.json()
-  dispatch(getAllGyms(gym))
+  dispatch(getAGym(gym))
   return gym
 
 }
@@ -48,7 +48,8 @@ export const getOneGym = (id) => async (dispatch) => {
 
 //----------------------------------------------------------------------------------//
 const initialState = {
-  gyms: {}
+  // gyms: {},
+  // gym: {},
   // classSession = {},
 }
 
@@ -57,13 +58,15 @@ export default function gymReducer(state = initialState, action) {
 
   switch (action.type) {
     case GET_GYMS:
-      newState = Object.assign({}, state)
-      newState.gyms = action.payload
+      // newState = Object.assign({}, state)
+      // newState.gyms = action.payload
+      newState = { ...state }
+      newState.gyms = action.gyms
       return newState
 
     case GET_ONE_GYM:
-      newState = Object.assign({}, state)
-      newState.gyms = action.payload
+      newState = { ...state }
+      newState.gym = action.gym
       return newState
 
     default:

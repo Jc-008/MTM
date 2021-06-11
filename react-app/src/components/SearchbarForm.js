@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import * as gymReducer from '../store/gyms'
 // import * as searchActions from '../../store/search'
 
 import {
@@ -21,6 +22,12 @@ const SearchBarForm = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [searchTerm, setSearchTerm] = useState('')
+  const gyms = useSelector(state => state.gyms);
+
+  useEffect(() => {
+    dispatch(gymReducer.getAllGyms())
+  }, [dispatch])
+
 
   // const handleSearch = async (e) => {
   //   e.preventDefault();
