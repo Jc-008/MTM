@@ -32,7 +32,8 @@ function UserMemberShipPage() {
   if (!user) {
     return null
   }
-
+  // align = { "center"}
+  // justify = { "center"}
 
   let ownerOrNot
   if (user.is_owner) {
@@ -102,7 +103,9 @@ function UserMemberShipPage() {
             border={'1px solid #f7f7f7'}
           >
             <Text
-              mt={'100px'}
+              align={"center"}
+              justify={"center"}
+              mt={'40px'}
               ml={'25px'}
               fontSize={'35px'}
               fontWeight={'500'}
@@ -121,8 +124,8 @@ function UserMemberShipPage() {
               // border={'5px solid #f7f7f7'}
               border={'2px solid #e0e0e0'}
               bg={'white'}
-              ml={'130px'}
-              mt={'85px'}
+              ml={'730px'}
+              mt={'75px'}
             >
               <Heading fontSize={'30px'} fontFamily={'body'}>
                 Credit plan
@@ -154,6 +157,7 @@ function UserMemberShipPage() {
               Past Classes
             </Text> */}
             {ownerOrNot}
+
 
           </Flex>
         </Flex>
