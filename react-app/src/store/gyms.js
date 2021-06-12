@@ -6,12 +6,12 @@ export const SET_ONE_CLASS = 'SET_ONE_CLASS';
 
 export const getGyms = (gyms) => ({
   type: GET_GYMS,
-  payload: gyms
+  gyms
 })
 
 export const getAGym = (gym) => ({
   type: GET_ONE_GYM,
-  payload: gym
+  gym
 })
 
 //---------------------------------------------------------------------------------------//
@@ -25,30 +25,32 @@ export const getAllGyms = () => async (dispatch) => {
   }
 
   const gyms = await response.json()
-  dispatch(getAllGyms(gyms))
+  dispatch(getGyms(gyms))
   return gyms
 
 }
 
 
-export const getOneGym = (id) => async (dispatch) => {
-  const response = await fetch(`/api/gyms/${id}`)
+// export const getOneGym = (id) => async (dispatch) => {
+//   const response = await fetch(`/api/gyms/${id}`)
 
-  if (!response.ok) {
-    const errors = await response.json()
-    return { errors }
-  }
+//   if (!response.ok) {
+//     const errors = await response.json()
+//     return { errors }
+//   }
 
-  const gym = await response.json()
-  dispatch(getAllGyms(gym))
-  return gym
+//   const gym = await response.json()
+//   dispatch(getAGym(gym))
+//   return gym
 
-}
+// }
 
 
 //----------------------------------------------------------------------------------//
 const initialState = {
-  gyms: {}
+  allGyms: {},
+  singleGym: null,
+  loaded: false,
   // classSession = {},
 }
 
@@ -57,13 +59,17 @@ export default function gymReducer(state = initialState, action) {
 
   switch (action.type) {
     case GET_GYMS:
-      newState = Object.assign({}, state)
-      newState.gyms = action.payload
-      return newState
+      // newState = Object.assign({}, state)
+      // newState.gyms = action.payload
+
+      // newState = { ...state }
+      // newState.allGyms = action.gyms
+      return { ...state, allGyms: { ...action.gyms }, loaded: true }
 
     case GET_ONE_GYM:
-      newState = Object.assign({}, state)
-      newState.gyms = action.payload
+      newState = { ...state }
+      newState.singleGym = newState.allGyms[action.gym] || null
+
       return newState
 
     default:

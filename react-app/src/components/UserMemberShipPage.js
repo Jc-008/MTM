@@ -29,6 +29,9 @@ function UserMemberShipPage() {
   const history = useHistory();
   // const { isOpen, onOpen, onClose } = useDisclosure()
 
+  console.log(user, '--------this is the user info')
+  // console.log(state, '--------this is the user info')
+
   if (!user) {
     return null
   }

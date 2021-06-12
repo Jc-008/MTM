@@ -13,8 +13,8 @@ def all_gyms():
     Get all gyms in Gym model
     '''
     gyms = Gym.query.all()
-    return {"gyms": [gym.to_dict() for gym in gyms]}
-    # return jsonify([gym.to_dict() for gym in gyms])
+    # return {"gyms": [gym.to_dict() for gym in gyms]}
+    return {gym.id: gym.to_dict() for gym in gyms}
 
 
 @gym_routes.route('/<int:id>/')

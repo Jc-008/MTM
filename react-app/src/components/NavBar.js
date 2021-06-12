@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import LogoutButton from './auth/LogoutButton';
-import SearchBarForm from '../components/SearchbarForm'
+import SearchBarDetails from '../components/SearchBarDetails'
 import SearchBarFormPt2 from '../components/SearchbarFormPt2'
 import {
   Wrap,
@@ -22,15 +22,18 @@ import {
   colorScheme,
 
 } from "@chakra-ui/react"
+import { getAllGyms } from '../store/gyms';
 
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+
 
   let searchbarVisibilityLeft
   if (sessionUser) {
     searchbarVisibilityLeft = (
-      <SearchBarForm />
+      <SearchBarDetails />
     )
   }
 
@@ -84,6 +87,11 @@ const NavBar = () => {
     )
   }
 
+  useEffect(() => {
+    // dispatch(gymReducer.getAllGyms())
+    dispatch(getAllGyms())                // when all the gyms populate the  allgyms = {}
+  }, [dispatch])
+
   return (
     <>
       <Grid templateColumns="repeat(10, 1fr)" gap={.7} bg="#FFFFF" minHeight={'64px'} >
@@ -93,7 +101,7 @@ const NavBar = () => {
         {/* <Flex w="100%" h="55px" /> */}
         <Flex w="100%" h="55px" mt={'-8px'}>
           {searchbarVisibilityLeft}
-          {/* <SearchBarForm /> */}
+          {/* <SearchBarDetails /> */}
         </Flex>
         <Flex w="100%" h="55px" mt={'-8px'} >
           {searchbarVisibilityRight}
@@ -133,7 +141,7 @@ export default NavBar;
       <Link href='/' w="100%" h="55px" textAlign="center" paddingTop={5} fontWeight="bold" _hover={{ color: "white", fontWeight: "bold", bg: "gray.100" }} >MTM</Link>
     </Flex>
     <Flex w="100%" h="55px" />
-    <SearchBarForm />
+    <SearchBarDetails />
     <Flex w="100%" h="55px" />
     <Flex w="100%" h="55px" />
     <Flex w="100%" h="55px" />

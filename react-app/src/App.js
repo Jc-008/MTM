@@ -13,19 +13,17 @@ import BusinessOwnerLogin from "./components/BusinessOwnerLogin";
 import SignUpPage from "./components/SignupPage";
 import UserHomePage from './components/UserHomePage';
 import UserMemberShipPage from "./components/UserMemberShipPage";
+import GymPages from "./components/GymPages";
 import { authenticate } from "./store/session";
 
 function App() {
   const user = useSelector(state => state.session.user)
-  const [loaded, setLoaded] = useState(false);
+  const loaded = useSelector(state => state.session.loaded);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      await dispatch(authenticate());
-      setLoaded(true);
-    })();
-  }, []);
+    dispatch(authenticate());
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -55,11 +53,15 @@ function App() {
           <UserHomePage />
         </Route>
 
-        <Route path="/results" exact={true}>
-          {/* < /> */}
-        </Route>
+        {/* <Route path="/results" exact={true}>
+          < />
+        </Route> */}
         <Route path="/membership" exact={true}>
           <UserMemberShipPage />
+        </Route>
+
+        <Route path="/gyms/:id" exact={true}>
+          <GymPages />
         </Route>
 
         <ProtectedRoute path="/users" exact={true} >
