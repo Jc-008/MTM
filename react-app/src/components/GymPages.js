@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 // import { getOneGym } from '../store/gyms'
 import { getAGym } from '../store/gyms'
 // import gyms from '../store/gyms'
+import { FaPhoneAlt, FaDirections } from 'react-icons/fa'
+import { BiMap, BiPhone } from "react-icons/bi";
 import {
   Box,
   Flex,
@@ -83,19 +85,47 @@ export default function GymPages() {
             ml='75px'
           // mt='100px'
           >
-            <Text
-        
+            <Flex>
+              <Text
+                ml='50px'
+              >
+                <BiMap fontSize={'25px'} />
+              </Text>
+              <Text
+                ml='30px'
+              >
+                {gym.address}
+              </Text>
 
-            >
-              {gym.address}
-            </Text>
-            <Text
+            </Flex>
+            <Flex
             // ml='75px'
+            // justify={'space-evenly'}
 
             >
-              {gym.phone_number}
-            </Text>
+              <Text
+                ml='50px'
+              >
+                <BiPhone fontSize={'25px'} />
+              </Text>
+              <Text
+                ml='50px'
+              >
+                {gym.phone_number}
+              </Text>
+            </Flex>
+            {/* <Flex
+              // ml='75px'
+              justify={'space-evenly'}
+              direction={'column'}
 
+            >
+              <FaDirections fontSize={'25px'} />
+              {gym.address}
+              <FaPhoneAlt fontSize={'25px'} />
+              {gym.phone_number}
+
+            </Flex> */}
           </Box>
 
         </Flex>
