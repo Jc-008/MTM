@@ -12,6 +12,7 @@ import {
   Flex,
   Text,
   Image,
+  Link,
   Button,
 } from "@chakra-ui/react"
 
@@ -30,8 +31,11 @@ export default function GymPages() {
 
   // console.log(gym, '-------')
 
+  // function eachSingleClass() {
+  //   classesInGym?.forEach((singleClass) => console.log(singleClass))
+  // }
 
-
+  // eachSingleClass()
   // function findCurrentGym(gyms, id) {
   //   console.log(gyms, 'gyms inside the function')
   //   // console.log(id, 'id inside the function')
@@ -99,6 +103,35 @@ export default function GymPages() {
             bg='white'
             ml='350px'
           >
+
+            <Flex
+              name='gym-class-container'
+              h='400px'
+              w='850px'
+              bg='purple'
+            >
+              {classesInGym.map((singleClass) => {
+                return (
+                  <Flex
+                    key={singleClass.id}
+                    h='100%'
+                    bg='white'
+                    direction='column'
+                  >
+                    <Link>
+                      {singleClass.title}
+                    </Link>
+                  </Flex>
+                )
+              })}
+            </Flex>
+
+
+
+
+
+
+
 
           </Flex>
         </Flex>
