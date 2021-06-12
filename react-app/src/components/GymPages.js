@@ -89,11 +89,13 @@ export default function GymPages() {
             w='850px'
             bg='white'
             ml='350px'
+            justify='center'
           >
             <Text
               fontSize='30px'
               fontWeight='600'
               mt='25px'
+              justify='center'
             >
               {gym.name}
             </Text>
@@ -105,22 +107,46 @@ export default function GymPages() {
           >
 
             <Flex
-              name='gym-class-container'
+              name='gym-classes-container'
               h='400px'
               w='850px'
               bg='purple'
+              direction='column'
             >
               {classesInGym.map((singleClass) => {
                 return (
                   <Flex
                     key={singleClass.id}
-                    h='100%'
-                    bg='white'
-                    direction='column'
+                    h='100px'
+                    bg='yellow'
+                    mt='50px'
+                  // direction='column'
                   >
-                    <Link>
-                      {singleClass.title}
-                    </Link>
+                    <Flex
+                      // direction='column'
+                      justify={'space-around'}
+                      align={'center'}
+                      bg='lightslategray'
+                      w='100%'
+
+                    >
+                      <Flex
+                      // ml='50px'
+                      // bg='white'
+                      >
+                        <Link fontSize='20px' fontWeight='500'> {singleClass.title} </Link>
+
+                      </Flex>
+                      <Flex
+                        // ml='100px'
+                        justify='center'
+                        // bg='blue'
+                        w='200px'
+                      >
+                        <Text fontSize='20px'> {singleClass.time}</Text>
+                      </Flex>
+
+                    </Flex>
                   </Flex>
                 )
               })}
@@ -152,12 +178,13 @@ export default function GymPages() {
           >
           </Box>
           <Box
+            name='gym-detail-container'
             bg='white'
             // align={"center"}
             justify={"center"}
             w='315px'
             h='350px'
-            ml='90px'
+            ml='102px'
           // mt='100px'
           >
             <Flex>
