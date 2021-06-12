@@ -23,8 +23,12 @@ export const authenticate = () => async (dispatch) => {
     }
   });
   const data = await response.json();
+  // if (data.errors) {
+  //   return;
+  // }
   if (data.errors) {
-    return;
+    dispatch(setUser(null))
+    return data;
   }
 
   dispatch(setUser(data))
@@ -42,7 +46,11 @@ export const login = (email, password) => async (dispatch) => {
     })
   });
   const data = await response.json();
+  // if (data.errors) {
+  //   return data;
+  // }
   if (data.errors) {
+    dispatch(setUser(null))
     return data;
   }
 
@@ -77,7 +85,11 @@ export const signUp = ({ email, first_name, last_name, zipcode, password }) => a
     }),
   });
   const data = await response.json();
+  // if (data.errors) {
+  //   return data;
+  // }
   if (data.errors) {
+    dispatch(setUser(null))
     return data;
   }
 
