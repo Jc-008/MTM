@@ -56,9 +56,20 @@ export default function GymPages() {
           w='60%'
           bg='lightcoral'
           h='97vh'
+          justify={"center"}
         >
+          <Box
+            h='550px'
+            w='750px'
+            bg={'blue'}
+            mt='100px'
+            ml='235px'
 
+          >
+            This is where the picture will be{gym.gym_url_image}
+          </Box>
         </Flex>
+
         <Flex
           name='right-container'
           w='40%'
@@ -74,58 +85,50 @@ export default function GymPages() {
             ml='75px'
             mt='100px'
           >
-
           </Box>
           <Box
             bg='white'
-            align={"center"}
+            // align={"center"}
             justify={"center"}
-            w='350px'
+            w='315px'
             h='350px'
-            ml='75px'
+            ml='90px'
           // mt='100px'
           >
             <Flex>
               <Text
-                ml='50px'
+                ml='15px'
+                mt='30px'
               >
                 <BiMap fontSize={'25px'} />
               </Text>
               <Text
                 ml='30px'
+                mt='25px'
+                fontSize='20px'
+                fontWeight='400'
               >
                 {gym.address}
               </Text>
 
             </Flex>
             <Flex
-            // ml='75px'
-            // justify={'space-evenly'}
-
             >
               <Text
-                ml='50px'
+                ml='15px'
+                mt='30px'
               >
                 <BiPhone fontSize={'25px'} />
               </Text>
               <Text
-                ml='50px'
+                ml='31px'
+                mt='25px'
+                fontSize='20px'
+                fontWeight='400'
               >
                 {gym.phone_number}
               </Text>
             </Flex>
-            {/* <Flex
-              // ml='75px'
-              justify={'space-evenly'}
-              direction={'column'}
-
-            >
-              <FaDirections fontSize={'25px'} />
-              {gym.address}
-              <FaPhoneAlt fontSize={'25px'} />
-              {gym.phone_number}
-
-            </Flex> */}
           </Box>
 
         </Flex>
