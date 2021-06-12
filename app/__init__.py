@@ -12,6 +12,7 @@ from .api.auth_routes import auth_routes
 from .api.search_routes import search_routes
 from .api.gym_routes import gym_routes
 from .api.classSession_routes import classSession_routes
+# from .api.gym_to_class_routes import gym_to_class_routes
 
 from .seeds import seed_commands
 
@@ -38,6 +39,8 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(search_routes, url_prefix='/api/search')
 app.register_blueprint(gym_routes, url_prefix='/api/gyms')
 app.register_blueprint(classSession_routes, url_prefix='/api/classSessions')
+# app.register_blueprint(gym_to_class_routes,
+#    url_prefix='/api/gym_to_class_routes')
 db.init_app(app)
 Migrate(app, db)
 

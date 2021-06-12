@@ -1,5 +1,6 @@
 from .db import db
 from .gymToClassSessions import gym_to_class_sessions
+from .classSession import ClassSession
 
 
 class Gym(db.Model):
@@ -28,5 +29,6 @@ class Gym(db.Model):
             "phone_number": self.phone_number,
             "gym_url_image": self.gym_url_image,
             "user": self.owner_id,
+            "gymClasses": [gymClass.to_dict() for gymClass in self.gymClasses]
             # "hours_of_operation": self.hours_of_operation,
         }

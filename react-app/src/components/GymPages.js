@@ -20,7 +20,8 @@ export default function GymPages() {
   const gymsLoaded = useSelector(state => state.gym.loaded)
   const dispatch = useDispatch()
   const { id } = useParams()
-  // const []
+  const classesInGym = useSelector(state => state.gym?.singleGym?.gymClasses)
+  console.log(classesInGym, '.....?????')
 
   useEffect(() => {
     // dispatch(gymReducer.getAllGyms())
@@ -28,6 +29,8 @@ export default function GymPages() {
   }, [dispatch, id, gymsLoaded])
 
   // console.log(gym, '-------')
+
+
 
   // function findCurrentGym(gyms, id) {
   //   console.log(gyms, 'gyms inside the function')
@@ -98,9 +101,7 @@ export default function GymPages() {
           >
 
           </Flex>
-
         </Flex>
-
         <Flex
           name='right-container'
           w='40%'
