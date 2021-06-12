@@ -5,12 +5,13 @@ import { useParams } from 'react-router-dom';
 // import { getOneGym } from '../store/gyms'
 import { getAGym } from '../store/gyms'
 // import gyms from '../store/gyms'
-import { FaPhoneAlt, FaDirections } from 'react-icons/fa'
+import { FaPhoneAlt, FaDirections, FaRegFileExcel } from 'react-icons/fa'
 import { BiMap, BiPhone } from "react-icons/bi";
 import {
   Box,
   Flex,
   Text,
+  Image,
   Button,
 } from "@chakra-ui/react"
 
@@ -46,6 +47,7 @@ export default function GymPages() {
   return gym && (
     <>
       <Flex
+        name={'gym-body-container'}
         h={'97vh'}
         bg={'lightblue'}
         align={"center"}
@@ -56,18 +58,46 @@ export default function GymPages() {
           w='60%'
           bg='lightcoral'
           h='97vh'
-          justify={"center"}
+          // justify={"center"}
+          align={"center"}
+          direction={'column'}
         >
-          <Box
-            h='550px'
-            w='750px'
-            bg={'blue'}
+          <Flex
+            name={'Image-container'}
+            h='650px'
+            w='850px'
+            bg={'#f7f7f7'}
             mt='100px'
-            ml='235px'
-
+            ml='350px'
+            justify={"center"}
           >
-            This is where the picture will be{gym.gym_url_image}
-          </Box>
+            <Image
+              src={gym.gym_url_image}
+              h='567px'
+            >
+            </Image>
+          </Flex>
+          <Flex
+            w='850px'
+            bg='white'
+            ml='350px'
+          >
+            <Text
+              fontSize='30px'
+              fontWeight='600'
+              mt='25px'
+            >
+              {gym.name}
+            </Text>
+          </Flex>
+          <Flex
+            w='750px'
+            bg='white'
+            ml='350px'
+          >
+
+          </Flex>
+
         </Flex>
 
         <Flex
