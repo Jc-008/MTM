@@ -28,7 +28,7 @@ const SearchBarDetails = () => {
   // const gymList = Object.values(useSelector((state => state.gyms)))
 
 
-  
+
 
   // console.log(gyms, '---this is all the gyms')
 
@@ -64,7 +64,7 @@ const SearchBarDetails = () => {
         <Flex
           direction='column'
         >
-          {searchTerm && gyms.filter(gym => gym.name.includes(searchTerm) || gym.address.includes(searchTerm)).map(gym => (
+          {searchTerm && gyms.filter(gym => gym.name.toLowerCase().includes(searchTerm) || gym.address.toLowerCase().includes(searchTerm)).map(gym => (
             <SearchResult result={gym} setSearchTerm={setSearchTerm} />
           ))}
         </Flex>

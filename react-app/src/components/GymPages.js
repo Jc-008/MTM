@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 // import { getOneGym } from '../store/gyms'
 import { getAGym } from '../store/gyms'
 // import gyms from '../store/gyms'
-import { FaPhoneAlt, FaDirections, FaRegFileExcel } from 'react-icons/fa'
+import { FaPhoneAlt, FaDirections } from 'react-icons/fa'
 import { BiMap, BiPhone } from "react-icons/bi";
 import {
   Box,
@@ -70,6 +70,7 @@ export default function GymPages() {
             mt='100px'
             ml='350px'
             justify={"center"}
+            align={"center"}
           >
             <Image
               src={gym.gym_url_image}
@@ -110,9 +111,9 @@ export default function GymPages() {
           <Box
             name='map-container'
             border='1px solid black'
-            w='350px'
-            h='350px'
-            ml='75px'
+            w='375px'
+            h='375px'
+            ml='72px'
             mt='100px'
           >
           </Box>
