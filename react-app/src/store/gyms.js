@@ -61,11 +61,10 @@ export default function gymReducer(state = initialState, action) {
     case GET_GYMS:
       // newState = Object.assign({}, state)
       // newState.gyms = action.payload
+
       // newState = { ...state }
       // newState.allGyms = action.gyms
-
-      // newState = action.gyms
-      return {...state, allGyms:{...action.gyms}, loaded: true }
+      return { ...state, allGyms: { ...action.gyms }, loaded: true }
 
     case GET_ONE_GYM:
       newState = { ...state }
