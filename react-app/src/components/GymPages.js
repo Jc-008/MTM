@@ -134,7 +134,7 @@ export default function GymPages() {
                       // ml='50px'
                       // bg='white'
                       >
-                        <Link fontSize='20px' fontWeight='500'> {singleClass.title} </Link>
+                        <Link href={`/classes/${singleClass.id}`} fontSize='20px' fontWeight='500'> {singleClass.title} </Link>
 
                       </Flex>
                       <Flex
