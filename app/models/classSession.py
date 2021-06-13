@@ -16,12 +16,12 @@ class ClassSession(db.Model):
 
     # need to double check line 10 and line 17 to make sure its working
 
-    # gyms = db.relationship('Gym', back_populates='classSessions')
     userFavs = db.relationship(
         'User', secondary=favorites, back_populates='favSessions')
-    classToGyms = db.relationship(
-        'Gym', secondary=gym_to_class_sessions,
-        back_populates='gymClasses')
+    gyms = db.relationship('Gym', back_populates='classSessions')
+    # classToGyms = db.relationship(
+    #     'Gym', secondary=gym_to_class_sessions,
+    #     back_populates='gymClasses')
     # Added line 21 after creation of joins table gym_to_class_sessions
 
     def to_dict(self):
@@ -32,5 +32,6 @@ class ClassSession(db.Model):
             'time': self.time,
             'description': self.description,
             'cost': self.cost,
-            'gym': self.gym_id,
+            # 'gym': self.gym_id,
+            'belongs_to_gym': self.gym_id,
         }

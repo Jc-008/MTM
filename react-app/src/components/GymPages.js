@@ -17,12 +17,13 @@ import {
 } from "@chakra-ui/react"
 
 export default function GymPages() {
-  const gym = useSelector(state => state.gym.singleGym);
+  const gym = useSelector(state => state.gym?.singleGym);
   const gymsLoaded = useSelector(state => state.gym.loaded)
   const dispatch = useDispatch()
   const { id } = useParams()
-  const classesInGym = useSelector(state => state.gym?.singleGym?.gymClasses)
-  console.log(classesInGym, '.....?????')
+  const classesInGym = useSelector(state => state.gym?.singleGym?.classSessions)
+  // console.log(classesInGym, '.....?????')
+  console.log(gym, '.....?????')
 
   useEffect(() => {
     // dispatch(gymReducer.getAllGyms())

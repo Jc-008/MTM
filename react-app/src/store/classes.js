@@ -62,6 +62,14 @@ export default function classSessionReducer(state = initialState, action) {
       newState.allClassSessions = action.classSessions
       return newState
 
+    // case GET_CLASSES:
+    //   const classesPayload = classSessions
+    //   const classes = {}
+    //   for (const singleClass of classesPayload.class_sessions) {
+    //     classes[singleClass.id] = singleClass
+    //   }
+    //   return classes
+
     case GET_ONE_CLASS:
       newState = { ...state }
       newState.singleClassSession = newState.allClassSessions[action.classSessions]
