@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from 'react-router-dom';
 import LoginForm from './auth/LoginForm'
 import { getAllClasses } from '../store/classes'
 import {
@@ -16,12 +17,14 @@ import {
   Heading,
   Flex,
   Text,
+  Link,
 } from "@chakra-ui/react"
 
 
 export default function UserHomePage() {
   const gymClasses = Object.values(useSelector(state => state.classSession.allClassSessions))
   const dispatch = useDispatch()
+  const { id } = useParams()
 
   console.log(gymClasses, '..... this is the classes')
 
@@ -46,7 +49,10 @@ export default function UserHomePage() {
               key={gymClass.id}
               mt='2%'
             >
-              {gymClass.title}
+              <Link href={`/classes/${gymClass.id}`}
+              >
+                {gymClass.title}
+              </Link>
 
             </Flex>
           )

@@ -31,24 +31,26 @@ export const getAllClasses = () => async (dispatch) => {
 }
 
 
-export const getOneClass = (id) => async (dispatch) => {
-  const response = await fetch(`/api/classSession/${id}/`)
+// export const getOneClass = (id) => async (dispatch) => {
+//   const response = await fetch(`/api/classSession/${id}/`)
 
-  if (!response.ok) {
-    const errors = await response.json()
-    return { errors }
-  }
+//   if (!response.ok) {
+//     const errors = await response.json()
+//     return { errors }
+//   }
 
-  const classSession = await response.json()
-  dispatch(getAClass(classSession))
-  return classSession
+//   const classSession = await response.json()
+//   dispatch(getAClass(classSession))
+//   return classSession
 
-}
+// }
 
 //----------------------------------------------------------------------------------//
 const initialState = {
   allClassSessions: {},
   singleClassSession: null,
+  // loaded: false,
+  // singleClassSession: {},
 }
 
 // Check the reducer below, don't think it is correct
@@ -61,18 +63,12 @@ export default function classSessionReducer(state = initialState, action) {
       newState = { ...state }
       newState.allClassSessions = action.classSessions
       return newState
+    // return { ...state, allClassSessions: { ...action.classSessions }, loaded: true }
 
-    // case GET_CLASSES:
-    //   const classesPayload = classSessions
-    //   const classes = {}
-    //   for (const singleClass of classesPayload.class_sessions) {
-    //     classes[singleClass.id] = singleClass
-    //   }
-    //   return classes
 
     case GET_ONE_CLASS:
       newState = { ...state }
-      newState.singleClassSession = newState.allClassSessions[action.classSessions]
+      newState.singleClassSession = newState.allClassSessions[action.classSession]
       return newState
 
     default:
