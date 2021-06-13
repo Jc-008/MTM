@@ -37,26 +37,38 @@ export default function UserHomePage() {
     // <h1> This should be the search page</h1>
     <>
       <Flex
-        name='all-classes-container'
-        direction='column'
-        bg='lightskyblue'
-      // mt='50px'
-      // h=''
+        bg='lightgray'
       >
-        {gymClasses.map((gymClass) => {
-          return (
-            <Flex
-              key={gymClass.id}
-              mt='2%'
-            >
-              <Link href={`/classes/${gymClass.id}`}
+        <Flex
+          name='all-classes-container'
+          direction='column'
+          bg='lightskyblue'
+          w='60%'
+        // mt='50px'
+        // h=''
+        >
+          {gymClasses.map((gymClass) => {
+            return (
+              <Flex
+                key={gymClass.id}
+                mt='2%'
               >
-                {gymClass.title}
-              </Link>
+                <Link href={`/classes/${gymClass.id}`}
+                >
+                  {gymClass.title}
+                </Link>
 
-            </Flex>
-          )
-        })}
+              </Flex>
+            )
+          })}
+        </Flex>
+        <Flex
+          bg='linen'
+          w='40%'
+        >
+
+        </Flex>
+
       </Flex>
     </>
   )

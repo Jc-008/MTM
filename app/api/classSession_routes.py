@@ -17,7 +17,18 @@ def classSessions():
     # classSessions = ClassSession.query.order_by(
     # ClassSession.time.desc()).all()
     # return {"classSessions": [classSession.to_dict() for classSession in classSessions]}
-    return {classSession.id: classSession.to_dict() for classSession in classSessions}
+    newClassList = []
+
+    for classSession in classSessions:
+        gym_query = Gym.query.filter(classSession.gym_id == Gym.id).first()
+        gym = gym_query.to_dict()
+        classSession = classSession.to_dict()
+        classSession['gym'] = gym
+        newClassList.append(classSession)
+
+    # print(classSessions, '------------ List')
+    # return {classSession.id: classSession.to_dict() for classSession in classSessions}
+    return {classSession['id']: classSession for classSession in newClassList}
 
     # print('hello this is on line 17 of the route /classSession')
 
