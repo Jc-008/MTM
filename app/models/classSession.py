@@ -9,10 +9,10 @@ class ClassSession(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50))
     imageUrl = db.Column(db.String(1000))
-    # gym_id = db.Column(db.Integer, db.ForeignKey('gyms.id'))
     time = db.Column(db.String(50))
     description = db.Column(db.String(750))
     cost = db.Column(db.Integer)
+    gym_id = db.Column(db.Integer, db.ForeignKey('gyms.id'))
 
     # need to double check line 10 and line 17 to make sure its working
 
@@ -29,8 +29,8 @@ class ClassSession(db.Model):
             'id': self.id,
             'title': self.title,
             'imageUrl': self.imageUrl,
-            # 'gyms': self.gym_id,
             'time': self.time,
             'description': self.description,
             'cost': self.cost,
+            'gym': self.gym_id,
         }
