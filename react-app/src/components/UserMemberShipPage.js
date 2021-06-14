@@ -176,7 +176,7 @@ function UserMemberShipPage() {
             </Text> */}
             {ownerOrNot}
             <Flex
-              bg='lightgreen'
+              // bg='lightgreen'
               w='30em'
               h='4.6em'
             // justify='center'
@@ -187,6 +187,7 @@ function UserMemberShipPage() {
                     <Flex
                       direction='column'
                       mb='2em'
+                      bg='#f7f7f7'
                     >
                       <Link href={`/classes/${singleClass.id}`}>
                         {singleClass.class.title}

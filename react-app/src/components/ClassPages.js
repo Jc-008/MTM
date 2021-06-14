@@ -47,14 +47,14 @@ export default function ClassPages() {
       <Flex
         name={'class-container'}
         h={'97vh'}
-        bg={'lightblue'}
+        // bg={'lightblue'}
         align={"center"}
         justify={"center"}
       >
         <Flex
           name='left-container'
           w='60%'
-          bg='lightcoral'
+          // bg='lightcoral'
           h='97vh'
           // justify={"center"}
           align={"center"}
@@ -101,7 +101,8 @@ export default function ClassPages() {
               // name='gym-classes-container'
               h='400px'
               w='850px'
-              bg='purple'
+              // bg='purple'
+              bg='#f7f7f7'
               direction='column'
             >
               <Text
@@ -121,7 +122,7 @@ export default function ClassPages() {
         <Flex
           name='right-container'
           w='40%'
-          bg='lightgreen'
+          // bg='lightgreen'
           h='97vh'
           direction='column'
         >
@@ -136,7 +137,8 @@ export default function ClassPages() {
           </Box>
           <Box
             name='gym-detail-container'
-            bg='white'
+            // bg='white'
+            bg='#f7f7f7'
             // align={"center"}
             justify={"center"}
             w='315px'

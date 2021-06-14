@@ -28,24 +28,24 @@ export function BaseOfModal() {
   // const initialRef = React.useRef()
   // const finalRef = React.useRef()
 
-  useEffect(() => {
-    if (modalStatus) {
-      onOpen()
-      console.log(onOpen)
-    }
-  }, [modalStatus])
+  // useEffect(() => {
+  //   if (modalStatus) {
+  //     onOpen()
+  //     console.log(onOpen)
+  //   }
+  // }, [modalStatus])
 
-  function handleClose() {
-    onClose()
-    dispatch(closeEditModal())
-  }
+  // function handleClose() {
+  //   onClose()
+  //   dispatch(closeEditModal())
+  // }
 
 
   return (
     <>
       <Button onClick={onOpen} colorScheme="blue" _hover={{ color: "white", fontWeight: "bold", bg: "gray.500" }}> Edit Detail</Button>
 
-      <Modal isOpen={isOpen} onClose={handleClose}>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent >
           <ModalHeader>

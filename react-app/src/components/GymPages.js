@@ -57,14 +57,14 @@ export default function GymPages() {
       <Flex
         name={'gym-body-container'}
         h={'97vh'}
-        bg={'lightblue'}
+        // bg={'lightblue'}
         align={"center"}
         justify={"center"}
       >
         <Flex
           name='left-container'
           w='60%'
-          bg='lightcoral'
+          // bg='lightcoral'
           h='97vh'
           // justify={"center"}
           align={"center"}
@@ -111,7 +111,8 @@ export default function GymPages() {
               name='gym-classes-container'
               h='400px'
               w='850px'
-              bg='purple'
+              // bg='purple'
+              bg='#f7f7f7'
               direction='column'
             >
               {classesInGym.map((singleClass) => {
@@ -119,7 +120,8 @@ export default function GymPages() {
                   <Flex
                     key={singleClass.id}
                     h='100px'
-                    bg='yellow'
+                    // bg='yellow'
+                    bg='#f7f7f7'
                     mt='50px'
                   // direction='column'
                   >
@@ -165,7 +167,7 @@ export default function GymPages() {
         <Flex
           name='right-container'
           w='40%'
-          bg='lightgreen'
+          // bg='lightgreen'
           h='97vh'
           direction='column'
         >
