@@ -147,15 +147,15 @@ export default function UserHomePage() {
           w='40%'
         >
 
-          {/* <LoadScript googleMapsApiKey={apiKey}>
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={13}
-            // onLoad={onLoad}
-            onUnmount={onUnmount} */}
-          >
-          {/* {gymsList != null && gymsList.map((gym, i) => {
+          <LoadScript googleMapsApiKey={apiKey}>
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={center}
+              zoom={13}
+              // onLoad={onLoad}
+              onUnmount={onUnmount}
+            >
+              {/* {gymsList != null && gymsList.map((gym, i) => {
               return (
                 <Marker
                   key={i}
@@ -166,7 +166,7 @@ export default function UserHomePage() {
               )
             })} */}
 
-          {/* {allGyms.map(async (gym, i) => {
+              {/* {allGyms.map(async (gym, i) => {
               let locationObj = {}
 
               let response = await Geocode.fromAddress(gym.address)
@@ -184,11 +184,11 @@ export default function UserHomePage() {
             })} */}
 
 
-          {/* <Marker
-              position={center}
-            />
-          </GoogleMap>
-          </LoadScript> */}
+              <Marker
+                position={center}
+              />
+            </GoogleMap>
+          </LoadScript>
 
 
         </Flex>)}

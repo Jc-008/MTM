@@ -97,6 +97,33 @@ export const signUp = ({ email, first_name, last_name, zipcode, password }) => a
   return true;
 }
 
+export const editUserDetails = ({ email, first_name, last_name, zipcode, password }) => async (dispatch) => {
+  const response = await fetch("/api/auth/signup", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      first_name,
+      last_name,
+      zipcode,
+      password,
+    }),
+  });
+  const data = await response.json();
+  // if (data.errors) {
+  //   return data;
+  // }
+  if (data.errors) {
+    dispatch(setUser(null))
+    return data;
+  }
+
+  dispatch(setUser(data))
+  return true;
+}
+
 
 
 //---------------------------------------------------------------------------------------//

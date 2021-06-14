@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session"
 import gymReducer from "./gyms"
 import classSessionReducer from './classes'
+import modalReducer from "./modal";
 
 const rootReducer = combineReducers({
     session,
     gym: gymReducer,
     classSession: classSessionReducer,
+    modal: modalReducer,
 });
 
 
