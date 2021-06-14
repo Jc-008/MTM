@@ -19,7 +19,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FaRegFileExcel } from 'react-icons/fa';
-
+import { BaseOfModal } from './modal/modal';
+import { showEditModal } from '../store/modal.js'
 
 
 
@@ -27,7 +28,7 @@ function UserMemberShipPage() {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
-  // const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   console.log(user, '--------this is the user info')
   // console.log(state, '--------this is the user info')
@@ -35,6 +36,8 @@ function UserMemberShipPage() {
   if (!user) {
     return null
   }
+
+
   // align = { "center"}
   // justify = { "center"}
 
@@ -45,8 +48,12 @@ function UserMemberShipPage() {
     )
   } else {
     ownerOrNot = (
-      <Text mt={'50px'} ml={'25px'} fontSize={'25px'} fontWeight={'500'}>Past Classes</Text>
+      <Text mt={'50px'} ml={'25px'} fontSize={'25px'} fontWeight={'500'}>Reserved Classes</Text>
     )
+  }
+
+  function handleEdit() {
+    dispatch(showEditModal())
   }
 
   return (
@@ -81,16 +88,23 @@ function UserMemberShipPage() {
           >
             zipcode: {user.zipcode}
           </Text>
-          <Button
+          {/* <Button
             rounded={'xl'}
             bg='#0055FF'
             color='white'
             _hover={{ bg: '#004de6' }}
             mt={'25px'}
             ml={'300px'}
+            onClick={handleEdit}
           >
             Edit Details
-          </Button>
+          </Button> */}
+          <Flex
+            ml='292px'
+          >
+            <BaseOfModal />
+
+          </Flex>
         </Box>
         <Flex
           direction={'column'}
@@ -150,6 +164,7 @@ function UserMemberShipPage() {
             // bg={'lightgray'}
             h={'500px'}
             border={'1px solid #f7f7f7'}
+            direction='column'
           >
             {/* <Text
               mt={'50px'}
@@ -160,7 +175,30 @@ function UserMemberShipPage() {
               Past Classes
             </Text> */}
             {ownerOrNot}
+            <Flex
+              // bg='lightgreen'
+              w='30em'
+              h='4.6em'
+            // justify='center'
+            >
+              <Box>
+                {user.reserved_classes.map((singleClass) => {
+                  return (
+                    <Flex
+                      direction='column'
+                      mb='2em'
+                      bg='#f7f7f7'
+                    >
+                      <Link href={`/classes/${singleClass.id}`}>
+                        {singleClass.class.title}
+                      </Link>
+                      {singleClass.class.time}
+                    </Flex>
+                  )
+                })}
+              </Box>
 
+            </Flex>
 
           </Flex>
         </Flex>

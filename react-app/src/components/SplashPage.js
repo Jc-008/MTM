@@ -33,7 +33,9 @@ export default function SplashPage() {
             // w={'100vw'}
             h={'750px'}
             rounded={'lg'}
-            src="https://images.ctfassets.net/ew96z4wsnz93/2LGVlmCh6Apy9bAmXNvR8u/572c282fa3b69ca4f0618e95ffc4ffa2/Homepage_Hero-Image_Desktop2.jpg" />
+            src="https://res.cloudinary.com/dwus7ia33/image/upload/v1623678692/MTM-Project/MTM-filler-hero_rdr0w3.jpg"
+          // src="https://images.ctfassets.net/ew96z4wsnz93/2LGVlmCh6Apy9bAmXNvR8u/572c282fa3b69ca4f0618e95ffc4ffa2/Homepage_Hero-Image_Desktop2.jpg"
+          />
         </Box>
       </Flex>
       <Flex

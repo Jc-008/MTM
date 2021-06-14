@@ -30,6 +30,21 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
 
+  let logoTxt;
+
+  if (sessionUser) {          // if user is logged in
+    logoTxt = (
+      <Link href='/search' fontSize={'23px'} textAlign="center" fontWeight="Bold" style={{ textDecoration: 'none' }}>MTM</Link>
+      // <Link href='' textAlign="center" fontWeight="500" style={{ textDecoration: 'none' }}>{{User.available_credit}}Credits</Link>
+    )
+  } else {                      // if user is NOT LOGGED in
+    logoTxt = (
+      <Link href='/' fontSize={'23px'} textAlign="center" fontWeight="Bold" style={{ textDecoration: 'none' }}>MTM</Link>
+    )
+  }
+
+
+
   let searchbarVisibilityLeft
   if (sessionUser) {
     searchbarVisibilityLeft = (
@@ -96,7 +111,8 @@ const NavBar = () => {
     <>
       <Grid templateColumns="repeat(10, 1fr)" gap={.7} bg="#FFFFF" minHeight={'64px'} >
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" _hover={{ fontWeight: "bold", bg: "#f7f7f7" }}>
-          <Link href='/' fontSize={'23px'} textAlign="center" fontWeight="Bold" style={{ textDecoration: 'none' }}>MTM</Link>
+          {logoTxt}
+          {/* <Link href='/' fontSize={'23px'} textAlign="center" fontWeight="Bold" style={{ textDecoration: 'none' }}>MTM</Link> */}
         </Flex>
         {/* <Flex w="100%" h="55px" /> */}
         <Flex w="100%" h="55px" mt={'-8px'}>

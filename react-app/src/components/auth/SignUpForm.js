@@ -22,6 +22,7 @@ export const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [fname, setfname] = useState("");
   const [lname, setlname] = useState("");
+  const [zipcode, setZipcode] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -35,7 +36,7 @@ export const SignUpForm = () => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      const dispatched = await dispatch(sessionActions.signUp({ fname, lname, email, password }))
+      const dispatched = await dispatch(sessionActions.signUp({ first_name: fname, last_name: lname, zipcode, email, password }))
       // .catch(async (res) => {
       //   const data = await res.json();
       //   if (data && data.errors) setErrors(data.errors);
@@ -59,7 +60,7 @@ export const SignUpForm = () => {
       >
         <form onSubmit={handleSubmit}>
           <div>
-            {errors.map((error, idx) => <span key={idx}>{error}</span>)}
+            {errors?.map((error, idx) => <span key={idx}>{error}</span>)}
           </div>
           <Stack spacing={3}>
             <FormControl mb={'15px'} isRequired>
@@ -88,6 +89,15 @@ export const SignUpForm = () => {
                   type='email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                />
+              </InputGroup>
+              <FormLabel>Zipcode</FormLabel>
+              <InputGroup>
+                <Input
+                  placeholder="Zipcode"
+                  type='text'
+                  value={zipcode}
+                  onChange={(e) => setZipcode(e.target.value)}
                 />
               </InputGroup>
               <FormLabel>Password</FormLabel>

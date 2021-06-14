@@ -6,12 +6,12 @@ export const SET_CLASS = 'SET_CLASS';
 
 export const getClasses = (classSessions) => ({
   type: GET_CLASSES,
-  payload: classSessions
+  classSessions
 })
 
 export const getAClass = (classSession) => ({
   type: GET_ONE_CLASS,
-  payload: classSession
+  classSession
 })
 
 //---------------------------------------------------------------------------------------//
@@ -31,24 +31,26 @@ export const getAllClasses = () => async (dispatch) => {
 }
 
 
-export const getOneClass = (id) => async (dispatch) => {
-  const response = await fetch(`/api/classSession/${id}/`)
+// export const getOneClass = (id) => async (dispatch) => {
+//   const response = await fetch(`/api/classSession/${id}/`)
 
-  if (!response.ok) {
-    const errors = await response.json()
-    return { errors }
-  }
+//   if (!response.ok) {
+//     const errors = await response.json()
+//     return { errors }
+//   }
 
-  const classSession = await response.json()
-  dispatch(getAClass(classSession))
-  return classSession
+//   const classSession = await response.json()
+//   dispatch(getAClass(classSession))
+//   return classSession
 
-}
+// }
 
 //----------------------------------------------------------------------------------//
 const initialState = {
-  classSessions: {}
-  // classSession = {},
+  allClassSessions: {},
+  singleClassSession: null,
+  // loaded: false,
+  // singleClassSession: {},
 }
 
 // Check the reducer below, don't think it is correct
@@ -58,13 +60,15 @@ export default function classSessionReducer(state = initialState, action) {
 
   switch (action.type) {
     case GET_CLASSES:
-      newState = Object.assign({}, state)
-      newState.classSessions = action.payload
+      newState = { ...state }
+      newState.allClassSessions = action.classSessions
       return newState
+    // return { ...state, allClassSessions: { ...action.classSessions }, loaded: true }
+
 
     case GET_ONE_CLASS:
-      newState = Object.assign({}, state)
-      newState.classSessions = action.payload
+      newState = { ...state }
+      newState.singleClassSession = newState.allClassSessions[action.classSession]
       return newState
 
     default:

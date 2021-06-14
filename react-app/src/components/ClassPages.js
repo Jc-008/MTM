@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
-// import * as gymReducer from '../store/gyms'
-// import { getOneGym } from '../store/gyms'
-import { getAGym } from '../store/gyms'
-// import gyms from '../store/gyms'
 import { FaPhoneAlt, FaDirections } from 'react-icons/fa'
-import { BiMap, BiPhone } from "react-icons/bi";
+import { getAllClasses } from '../store/classes'
+import { getAClass } from '../store/classes'
+import { BiMap, BiTime, BiMoney } from "react-icons/bi";
 import {
   Box,
   Flex,
@@ -16,46 +14,38 @@ import {
   Button,
 } from "@chakra-ui/react"
 
-export default function GymPages() {
-  const gym = useSelector(state => state.gym?.singleGym);
-  const gymsLoaded = useSelector(state => state.gym.loaded)
+
+export default function ClassPages() {
+  // Used without the loaded
+  const singleClass = Object.values(useSelector(state => state?.classSession?.allClassSessions))
+
   const dispatch = useDispatch()
   const { id } = useParams()
-  const classesInGym = useSelector(state => state.gym?.singleGym?.classSessions)
-  // console.log(classesInGym, '.....?????')
-  console.log(gym, '.....?????')
+  const currentClassDetails = singleClass[id - 1]
 
   useEffect(() => {
-    // dispatch(gymReducer.getAllGyms())
-    gymsLoaded && dispatch(getAGym(id))      // if allGyms[id] is truthy then it will dispatch
-  }, [dispatch, id, gymsLoaded])
+    dispatch(getAllClasses())
+  }, [dispatch])
 
-  // console.log(gym, '-------')
+  console.log(id, '.... this is ID')
+  console.log(currentClassDetails?.imageUrl, '...... this is a single class ')
 
-  // function eachSingleClass() {
-  //   classesInGym?.forEach((singleClass) => console.log(singleClass))
-  // }
+  // const classes = useSelector(state => state?.classSession?.singleClassSession);
+  // const classesLoaded = useSelector(state => state.classSession.loaded)
+  // const dispatch = useDispatch()
+  // const { id } = useParams()
+  // // const
 
-  // eachSingleClass()
-  // function findCurrentGym(gyms, id) {
-  //   console.log(gyms, 'gyms inside the function')
-  //   // console.log(id, 'id inside the function')
-  //   // return gyms.filter((gym) => {
-  //   //   return gym.id === id
-  //   // })
-  // }
-  // gyms?.forEach(gym => console.log(gym?.id))
+  // console.log(classes, ' this is the classes with loaded')
 
-  // const findGymById = gyms?.find(gym => gym?.id === Number(id))
-  // console.log(findGymById?.name, '------ gym by id')
+  // useEffect(() => {
+  //   classesLoaded && dispatch(getAClass(id))
+  // }, [dispatch, id, classesLoaded])
 
-  // const singleGym = findCurrentGym(gyms, id)
-  // console.log(singleGym, 'Single Gym details')
-
-  return gym && (
+  return (
     <>
       <Flex
-        name={'gym-body-container'}
+        name={'class-container'}
         h={'97vh'}
         // bg={'lightblue'}
         align={"center"}
@@ -81,7 +71,7 @@ export default function GymPages() {
             align={"center"}
           >
             <Image
-              src={gym.gym_url_image}
+              src={currentClassDetails?.imageUrl}
               h='567px'
             >
             </Image>
@@ -98,7 +88,7 @@ export default function GymPages() {
               mt='25px'
               justify='center'
             >
-              {gym.name}
+              {currentClassDetails?.title}
             </Text>
           </Flex>
           <Flex
@@ -108,58 +98,23 @@ export default function GymPages() {
           >
 
             <Flex
-              name='gym-classes-container'
+              // name='gym-classes-container'
               h='400px'
               w='850px'
               // bg='purple'
               bg='#f7f7f7'
               direction='column'
             >
-              {classesInGym.map((singleClass) => {
-                return (
-                  <Flex
-                    key={singleClass.id}
-                    h='100px'
-                    // bg='yellow'
-                    bg='#f7f7f7'
-                    mt='50px'
-                  // direction='column'
-                  >
-                    <Flex
-                      // direction='column'
-                      justify={'space-around'}
-                      align={'center'}
-                      bg='lightslategray'
-                      w='100%'
+              <Text
+                fontSize='30px'
+                fontWeight='600'
+                mt='25px'
+                justify='center'
+              >
+                {currentClassDetails?.description}
+              </Text>
 
-                    >
-                      <Flex
-                      // ml='50px'
-                      // bg='white'
-                      >
-                        <Link href={`/classes/${singleClass.id}`} fontSize='20px' fontWeight='500'> {singleClass.title} </Link>
-
-                      </Flex>
-                      <Flex
-                        // ml='100px'
-                        justify='center'
-                        // bg='blue'
-                        w='200px'
-                      >
-                        <Text fontSize='20px'> {singleClass.time}</Text>
-                      </Flex>
-
-                    </Flex>
-                  </Flex>
-                )
-              })}
             </Flex>
-
-
-
-
-
-
 
 
           </Flex>
@@ -182,7 +137,8 @@ export default function GymPages() {
           </Box>
           <Box
             name='gym-detail-container'
-            bg='white'
+            // bg='white'
+            bg='#f7f7f7'
             // align={"center"}
             justify={"center"}
             w='315px'
@@ -203,7 +159,7 @@ export default function GymPages() {
                 fontSize='20px'
                 fontWeight='400'
               >
-                {gym.address}
+                {/* {gym.address} */}
               </Text>
 
             </Flex>
@@ -213,7 +169,7 @@ export default function GymPages() {
                 ml='15px'
                 mt='30px'
               >
-                <BiPhone fontSize={'25px'} />
+                <BiTime fontSize={'25px'} />
               </Text>
               <Text
                 ml='31px'
@@ -221,7 +177,24 @@ export default function GymPages() {
                 fontSize='20px'
                 fontWeight='400'
               >
-                {gym.phone_number}
+                {currentClassDetails?.time}
+              </Text>
+            </Flex>
+            <Flex
+            >
+              <Text
+                ml='15px'
+                mt='30px'
+              >
+                <BiMoney fontSize={'25px'} />
+              </Text>
+              <Text
+                ml='31px'
+                mt='25px'
+                fontSize='20px'
+                fontWeight='400'
+              >
+                {currentClassDetails?.cost} Credits
               </Text>
             </Flex>
           </Box>

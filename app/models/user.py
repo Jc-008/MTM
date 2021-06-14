@@ -1,3 +1,4 @@
+from sqlalchemy.orm import backref
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -14,12 +15,14 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(25), nullable=False)
     zipcode = db.Column(db.String(5), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
-    available_credit = db.Column(db.Integer, nullable=False)
-    is_owner = db.Column(db.Boolean(), nullable=False)
+    available_credit = db.Column(db.Integer, default=24)
+    is_owner = db.Column(db.Boolean(), default=False)
 
     gyms = db.relationship("Gym", back_populates="user")
     favSessions = db.relationship(
         "ClassSession", secondary=favorites, back_populates='userFavs')
+    user_reservation = db.relationship(
+        "Reservation", backref='reservation_user', cascade='all, delete')
     # Added back_populates on line 21
 
     @property
@@ -41,6 +44,7 @@ class User(db.Model, UserMixin):
             "zipcode": self.zipcode,
             'available_credit': self.available_credit,
             'is_owner': self.is_owner,
+            "email": self.email,
+            'reserved_classes': [classes.to_classes() for classes in self.user_reservation]
             # "username": self.username,
-            # "email": self.email,
         }

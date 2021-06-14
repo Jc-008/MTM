@@ -14,6 +14,7 @@ import SignUpPage from "./components/SignupPage";
 import UserHomePage from './components/UserHomePage';
 import UserMemberShipPage from "./components/UserMemberShipPage";
 import GymPages from "./components/GymPages";
+import ClassPages from "./components/ClassPages";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -62,6 +63,10 @@ function App() {
 
         <Route path="/gyms/:id" exact={true}>
           <GymPages />
+        </Route>
+
+        <Route path="/classes/:id" exact={true}>
+          <ClassPages />
         </Route>
 
         <ProtectedRoute path="/users" exact={true} >

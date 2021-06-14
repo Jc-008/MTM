@@ -1,5 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
+from os import environ
+import os
 from app.models import db, Gym
 
 gym_routes = Blueprint(
@@ -22,3 +24,12 @@ def all_gyms():
 def get_one_gym(id):
     gym = Gym.query.get(id)
     return gym.to_dict()
+
+
+@gym_routes.route('/maps')
+def get_map_api():
+    '''
+    Get the api key
+    '''
+    mapKey = os.environ.get('GOOGLE_API_KEY')
+    return jsonify(mapKey)
