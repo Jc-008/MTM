@@ -43,7 +43,7 @@ export function BaseOfModal() {
 
   return (
     <>
-      <Button onClick={onOpen} colorScheme="blue" variant="ghost" _hover={{ color: "white", fontWeight: "bold", bg: "gray.500" }}> Edit Detail</Button>
+      <Button onClick={onOpen} colorScheme="blue" _hover={{ color: "white", fontWeight: "bold", bg: "gray.500" }}> Edit Detail</Button>
 
       <Modal isOpen={isOpen} onClose={handleClose}>
         <ModalOverlay />

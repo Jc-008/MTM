@@ -106,7 +106,7 @@ export default function UserHomePage() {
         <Flex
           name='all-classes-container'
           direction='column'
-          bg='lightskyblue'
+          bg='lightgrey'
           w='60%'
           h='97vh'
           overflow='scroll'
@@ -123,18 +123,35 @@ export default function UserHomePage() {
               >
                 <Box
                   rounded='xl'
-                  boxShadow={'0 4px 12px rgb(0 0 0 / 24%)'}
+                  boxShadow={'0 4px 12px rgb(0 0 0 / 12%)'}
                   p={8}
                 >
-                  <ul>
-                    <ul>
-                      <Link href={`/classes/${gymClass.id}`}
-                      >
-                        {gymClass.title}
-                      </Link>
+                  <Flex
+                    justify='space-around'
+                  >
+                    <Link
+                      href={`/classes/${gymClass.id}`}
+                      fontWeight='600'
+                      fontSize='18px'
+                    >
+                      {gymClass.title}
+                    </Link>
+                    <Text
+                      fontWeight='400'
+                      fontSize='15px'
+                      justify='center'
+                    >
+                      {gymClass.time}
 
-                    </ul>
-                  </ul>
+                    </Text>
+                    <Text
+                      fontWeight='400'
+                      fontSize='15px'
+                      justify='center'
+                    >
+                      {gymClass.gym.name}
+                    </Text>
+                  </Flex>
                 </Box>
 
               </Flex>

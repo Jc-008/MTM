@@ -99,7 +99,12 @@ function UserMemberShipPage() {
           >
             Edit Details
           </Button> */}
-          <BaseOfModal />
+          <Flex
+            ml='292px'
+          >
+            <BaseOfModal />
+
+          </Flex>
         </Box>
         <Flex
           direction={'column'}
@@ -172,16 +177,21 @@ function UserMemberShipPage() {
             {ownerOrNot}
             <Flex
               bg='lightgreen'
-              w='25em'
+              w='30em'
               h='4.6em'
+            // justify='center'
             >
               <Box>
                 {user.reserved_classes.map((singleClass) => {
                   return (
-                    <Flex>
+                    <Flex
+                      direction='column'
+                      mb='2em'
+                    >
                       <Link href={`/classes/${singleClass.id}`}>
                         {singleClass.class.title}
                       </Link>
+                      {singleClass.class.time}
                     </Flex>
                   )
                 })}
