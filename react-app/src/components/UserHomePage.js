@@ -37,7 +37,7 @@ export default function UserHomePage() {
       setApiKey(map)
       setLoad(true)
     })()
-  })
+  }, [])
 
   useEffect(() => {
     dispatch(getAllClasses())
