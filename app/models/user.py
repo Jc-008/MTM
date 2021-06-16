@@ -45,6 +45,6 @@ class User(db.Model, UserMixin):
             'available_credit': self.available_credit,
             'is_owner': self.is_owner,
             "email": self.email,
-            'reserved_classes': [classes.to_classes() for classes in self.user_reservation]
+            'reserved_classes': {classes.classSession_id: classes.to_classes() for classes in self.user_reservation}
             # "username": self.username,
         }

@@ -27,12 +27,12 @@ class Reservation(db.Model):
 
     def to_users(self):
         return {
-            'id': self.id,
+            'reservationId': self.id,
             'user': self.reservation_user.to_dict(),
         }
 
     def to_classes(self):
         return {
-            'id': self.id,
+            'reservationId': self.id,
             'class': self.reservation_class.to_dict(),
         }

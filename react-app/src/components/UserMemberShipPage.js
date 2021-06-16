@@ -182,7 +182,7 @@ function UserMemberShipPage() {
             // justify='center'
             >
               <Box>
-                {user.reserved_classes.map((singleClass) => {
+                {Object.values(user.reserved_classes).map((singleClass) => {
                   return (
                     <Flex
                       direction='column'

@@ -1,7 +1,10 @@
-export const GET_CLASSES = 'GET_CLASSES';
-export const GET_ONE_CLASS = 'GET_CLASS';
-export const SET_CLASSES = 'SET_CLASSES';
-export const SET_CLASS = 'SET_CLASS';
+import { createReservation, deleteReservation } from "./session";
+
+const GET_CLASSES = 'GET_CLASSES';
+const GET_ONE_CLASS = 'GET_CLASS';
+// const CREATE_RESERVATION = 'CREATE_RESERVATION'
+const SET_CLASSES = 'SET_CLASSES';
+const SET_CLASS = 'SET_CLASS';
 
 
 export const getClasses = (classSessions) => ({
@@ -13,6 +16,11 @@ export const getAClass = (classSession) => ({
   type: GET_ONE_CLASS,
   classSession
 })
+
+// export const createReservation = (reservation) => ({
+//   type: CREATE_RESERVATION,
+//   reservation
+// })
 
 //---------------------------------------------------------------------------------------//
 
@@ -30,6 +38,44 @@ export const getAllClasses = () => async (dispatch) => {
 
 }
 
+export const makeReservation = (classSessionId) => async (dispatch) => {
+  const response = await fetch('/api/classSessions/reservation/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ classSessionId })
+
+  })
+
+  if (!response.ok) {
+    const errors = await response.json()
+    return { errors }
+  }
+
+  const reservation = await response.json()
+  console.log(reservation, '..... res')
+  dispatch(createReservation(reservation, classSessionId))
+  return reservation
+}
+
+export const removeReservation = (reservationId) => async (dispatch) => {
+  const response = await fetch('/api/classSessions/reservation/', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ reservationId })
+
+  })
+
+  if (!response.ok) {
+    const errors = await response.json()
+    return { errors }
+  }
+
+  const reservation = await response.json()
+  dispatch(deleteReservation(reservationId))
+  return reservation
+}
+
+
 
 // export const getOneClass = (id) => async (dispatch) => {
 //   const response = await fetch(`/api/classSession/${id}/`)
@@ -44,6 +90,9 @@ export const getAllClasses = () => async (dispatch) => {
 //   return classSession
 
 // }
+
+
+
 
 //----------------------------------------------------------------------------------//
 const initialState = {
@@ -70,6 +119,8 @@ export default function classSessionReducer(state = initialState, action) {
       newState = { ...state }
       newState.singleClassSession = newState.allClassSessions[action.classSession]
       return newState
+
+
 
     default:
       return state;

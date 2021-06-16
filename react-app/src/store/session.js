@@ -1,6 +1,8 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const CREATE_RESERVATION = 'CREATE_RESERVATION'
+const DELETE_RESERVATION = 'DELETE_RESERVATION'
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -11,6 +13,16 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
+export const createReservation = (reservation, classSessionId) => ({
+  type: CREATE_RESERVATION,
+  reservation,
+  classSessionId
+})
+
+export const deleteReservation = (reservationID) => ({
+  type: DELETE_RESERVATION,
+  reservationID
+})
 
 
 //---------------------------------------------------------------------------------------//
@@ -128,11 +140,25 @@ export const editUserDetails = ({ email, first_name, last_name, zipcode, passwor
 
 //---------------------------------------------------------------------------------------//
 export default function reducer(state = initialState, action) {
+  let newState;
+
   switch (action.type) {
     case SET_USER:
       return { user: action.payload, loaded: true }
+
     case REMOVE_USER:
       return { ...state, user: null }
+
+    case CREATE_RESERVATION:
+      newState = { ...state }
+      newState.user.reserved_classes[action.classSessionId] = action.reservation[action.classSessionId]
+      return newState
+
+    case DELETE_RESERVATION:
+      newState = { ...state }
+      delete newState.user.reserved_classes[action.reservationID]
+      return newState
+
     default:
       return state;
   }

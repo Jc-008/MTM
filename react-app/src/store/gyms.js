@@ -1,7 +1,7 @@
-export const GET_GYMS = 'GET_GYMS';
-export const GET_ONE_GYM = 'GET_ONE_GYM';
-export const SET_CLASSES = 'SET_CLASSES';
-export const SET_ONE_CLASS = 'SET_ONE_CLASS';
+const GET_GYMS = 'GET_GYMS';
+const GET_ONE_GYM = 'GET_ONE_GYM';
+const SET_CLASSES = 'SET_CLASSES';
+const SET_ONE_CLASS = 'SET_ONE_CLASS';
 
 
 export const getGyms = (gyms) => ({
