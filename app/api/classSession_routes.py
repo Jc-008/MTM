@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import db, ClassSession, Gym
+from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
+from app.models import db, ClassSession, Gym, Reservation, reservation
 
 classSession_routes = Blueprint(
     'class_sessions', __name__, url_prefix='/api/classSessions')
@@ -36,7 +36,7 @@ def classSessions():
 #   use that id to query thru class session to grab the gym id where is i
 
 
-@ classSession_routes.route('/<int:id>/')
+@classSession_routes.route('/<int:id>/')
 # @login_required
 def get_one_class(id):
     classSession = ClassSession.query.get(id)
@@ -48,5 +48,24 @@ def get_one_class(id):
 #     gymDetails = classSessions.belongs_to_gym.query.all(Gym)
 #     return gymDetails.to_dict()
 
+
+@classSession_routes.route('/reservation/', methods=['POST'])
+def create_reservation():
+    userId = current_user.id
+    class_session_id = request.json['classSessionId']
+    singleReservation = Reservation(
+        user_id=userId, classSession_id=class_session_id)
+    db.session.add(singleReservation)
+    db.session.commit()
+    return {singleReservation.classSession_id: singleReservation.to_classes()}
+
+
+@classSession_routes.route('/reservation/', methods=['DELETE'])
+def delete_reservation():
+    reservation_id = request.json['reservationId']
+    reservation = Reservation.query.get(reservation_id)
+    db.session.delete(reservation)
+    db.session.commit()
+    return {'message': 'success'}
 
 # -----------------------------------------------------------------------------------#

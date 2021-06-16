@@ -120,7 +120,7 @@ const NavBar = () => {
           {/* <SearchBarDetails /> */}
         </Flex>
         <Flex w="100%" h="55px" mt={'-8px'} >
-          {searchbarVisibilityRight}
+          {/* {searchbarVisibilityRight} */}
           {/* <SearchBarFormPt2 /> */}
         </Flex>
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" />

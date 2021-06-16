@@ -5,6 +5,7 @@ import { FaPhoneAlt, FaDirections } from 'react-icons/fa'
 import { getAllClasses } from '../store/classes'
 import { getAClass } from '../store/classes'
 import { BiMap, BiTime, BiMoney } from "react-icons/bi";
+import { makeReservation, removeReservation } from '../store/classes'
 import {
   Box,
   Flex,
@@ -17,30 +18,31 @@ import {
 
 export default function ClassPages() {
   // Used without the loaded
-  const singleClass = Object.values(useSelector(state => state?.classSession?.allClassSessions))
-
+  const allClasses = useSelector(state => state?.classSession?.allClassSessions)
+  const user = useSelector(state => state?.session.user)
   const dispatch = useDispatch()
   const { id } = useParams()
-  const currentClassDetails = singleClass[id - 1]
+  const currentClassDetails = allClasses[id]
 
   useEffect(() => {
     dispatch(getAllClasses())
   }, [dispatch])
 
-  console.log(id, '.... this is ID')
-  console.log(currentClassDetails?.imageUrl, '...... this is a single class ')
+  // console.log(id, '.... this is ID')
+  console.log(allClasses, '....AllClass Array')
+  // console.log(currentClassDetails?.imageUrl, '...... this is a single class ')
+  console.log(currentClassDetails, '...... this is a single class details ')
+  // console.log(user, '..... user')
 
-  // const classes = useSelector(state => state?.classSession?.singleClassSession);
-  // const classesLoaded = useSelector(state => state.classSession.loaded)
-  // const dispatch = useDispatch()
-  // const { id } = useParams()
-  // // const
+  function handleReservation() {
 
-  // console.log(classes, ' this is the classes with loaded')
+    if (!user.reserved_classes[id]) {   // created the reservation
+      dispatch(makeReservation(id))
+    } else {
+      dispatch(removeReservation(user.reserved_classes[id].reservationId))
+    }
+  }
 
-  // useEffect(() => {
-  //   classesLoaded && dispatch(getAClass(id))
-  // }, [dispatch, id, classesLoaded])
 
   return (
     <>
@@ -197,6 +199,18 @@ export default function ClassPages() {
                 {currentClassDetails?.cost} Credits
               </Text>
             </Flex>
+            <Button
+              onClick={handleReservation}
+              ml='100px'
+              mt='50px'
+            >
+              {user.reserved_classes[id] &&
+                'Cancel'
+              }
+              {!user.reserved_classes[id] &&
+                'Reserve'
+              }
+            </Button>
           </Box>
 
         </Flex>
