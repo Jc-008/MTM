@@ -37,10 +37,6 @@ function UserMemberShipPage() {
     return null
   }
 
-
-  // align = { "center"}
-  // justify = { "center"}
-
   let ownerOrNot
   if (user.is_owner) {
     ownerOrNot = (
@@ -51,6 +47,20 @@ function UserMemberShipPage() {
       <Text mt={'50px'} ml={'25px'} fontSize={'25px'} fontWeight={'500'}>Reserved Classes</Text>
     )
   }
+
+  let ifOwner
+  if (user.is_owner) {
+    ifOwner = (
+      <Button>
+        <a href='/add-gym'>
+          <i className="fa fa-plus"></i>
+        </a>
+      </Button>
+    )
+  } else {
+
+  }
+
 
   function handleEdit() {
     dispatch(showEditModal())
