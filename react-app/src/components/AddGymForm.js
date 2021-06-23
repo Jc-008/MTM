@@ -22,6 +22,7 @@ export default function AddGymForm() {
   const [newGymAddress, setNewGymAddress] = useState("")
   const [newGymPhoneNum, setNewGymPhoneNum] = useState("")
   const [gymPicture, setGymPicture] = useState("")
+  const [errors, setErrors] = useState([]);
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -38,11 +39,11 @@ export default function AddGymForm() {
         <Box
           w={'450px'}
           // rounded={'xl'}
-          bg={useColorModeValue('white', 'gray.700')}
+          // bg={useColorModeValue('white', 'gray.700')}
           boxShadow={'0 4px 12px rgb(0 0 0 / 24%)'}
           p={8}
-          // mt={'100px'}
-          h={'500px'}
+        // mt={'100px'}
+        // h={'555px'}
         >
           <Text
             align={"center"}
@@ -68,7 +69,7 @@ export default function AddGymForm() {
                     type='text'
                     value={newGymName}
                     onChange={(e) => setNewGymName(e.target.value)}
-                    mb={'15px'}
+                    mb={'25px'}
                   />
                 </InputGroup>
                 <FormLabel>Address</FormLabel>
@@ -78,7 +79,7 @@ export default function AddGymForm() {
                     type='text'
                     value={newGymAddress}
                     onChange={(e) => setNewGymAddress(e.target.value)}
-                    mb={'10px'}
+                    mb={'25px'}
                   />
                 </InputGroup>
                 <FormLabel>Phone Number</FormLabel>
@@ -88,7 +89,7 @@ export default function AddGymForm() {
                     type='tel'
                     value={newGymPhoneNum}
                     onChange={(e) => setNewGymPhoneNum(e.target.value)}
-                    mb={'10px'}
+                    mb={'25px'}
                   />
                 </InputGroup>
                 <FormLabel>Gym Photo or Logo</FormLabel>
@@ -98,16 +99,16 @@ export default function AddGymForm() {
                     type='file'
                     value={gymPicture}
                     onChange={(e) => setGymPicture(e.target.value)}
-                    mb={'10px'}
+                    mb={'25px'}
                   />
                 </InputGroup>
-                <br />
+                {/* <br /> */}
                 <Flex
                   align={"center"}
                   justify={"center"}
-                  mb={'15px'}
+                // mb={'15px'}
                 >
-                  <Button type='Submit' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}>Log in</Button>
+                  <Button type='Submit' bg='#0055FF' color='white' _hover={{ bg: '#004de6' }}>Add</Button>
                 </Flex>
               </FormControl>
             </Stack>

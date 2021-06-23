@@ -7,16 +7,16 @@ import {
   Link,
   Text,
   Image,
-  Input,
-  Stack,
+  // Input,
+  // Stack,
   Button,
   Heading,
-  FormLabel,
-  Container,
-  InputGroup,
-  FormControl,
+  // FormLabel,
+  // Container,
+  // InputGroup,
+  // FormControl,
   useDisclosure,
-  useColorModeValue,
+  // useColorModeValue,
 } from "@chakra-ui/react";
 import { FaRegFileExcel } from 'react-icons/fa';
 import { BaseOfModal } from './modal/modal';
@@ -58,7 +58,22 @@ function UserMemberShipPage() {
       </Button>
     )
   } else {
-
+    ifOwner = (
+      Object.values(user.reserved_classes).map((singleClass) => {
+        return (
+          <Flex
+            direction='column'
+            mb='2em'
+            bg='#f7f7f7'
+          >
+            <Link href={`/classes/${singleClass.id}`}>
+              {singleClass.class.title}
+            </Link>
+            {singleClass.class.time}
+          </Flex>
+        )
+      })
+    )
   }
 
 
@@ -192,7 +207,8 @@ function UserMemberShipPage() {
             // justify='center'
             >
               <Box>
-                {Object.values(user.reserved_classes).map((singleClass) => {
+                {ifOwner}
+                {/* {Object.values(user.reserved_classes).map((singleClass) => {
                   return (
                     <Flex
                       direction='column'
@@ -205,7 +221,7 @@ function UserMemberShipPage() {
                       {singleClass.class.time}
                     </Flex>
                   )
-                })}
+                })} */}
               </Box>
 
             </Flex>

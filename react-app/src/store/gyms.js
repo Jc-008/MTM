@@ -1,7 +1,9 @@
 const GET_GYMS = 'GET_GYMS';
 const GET_ONE_GYM = 'GET_ONE_GYM';
-const SET_CLASSES = 'SET_CLASSES';
-const SET_ONE_CLASS = 'SET_ONE_CLASS';
+const CREATE_GYM = 'CREATE_GYM'
+const DELETE_GYM = 'DELETE_GYM'
+// const SET_CLASSES = 'SET_CLASSES';
+// const SET_ONE_CLASS = 'SET_ONE_CLASS';
 
 
 export const getGyms = (gyms) => ({
@@ -12,6 +14,15 @@ export const getGyms = (gyms) => ({
 export const getAGym = (gym) => ({
   type: GET_ONE_GYM,
   gym
+})
+
+export const createGym = (gym) => ({
+  type: CREATE_GYM,
+  gym
+})
+
+export const deleteAGym = () => ({
+  type: DELETE_GYM,
 })
 
 //---------------------------------------------------------------------------------------//
@@ -27,6 +38,26 @@ export const getAllGyms = () => async (dispatch) => {
   const gyms = await response.json()
   dispatch(getGyms(gyms))
   return gyms
+
+}
+
+export const createNewGym = () => async (dispatch) => {
+
+}
+
+export const deleteGym = (gymId) => async (dispatch) => {
+  const response = await fetch(`/api/gyms/${gymId}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ gymId })
+  })
+
+  if (!response.ok) {
+    const errors = await response.json()
+    return { errors }
+  }
+
+  dispatch(deleteAGym(gymId))
 
 }
 
