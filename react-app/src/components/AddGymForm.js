@@ -21,11 +21,21 @@ export default function AddGymForm() {
   const [newGymName, setNewGymName] = useState("")
   const [newGymAddress, setNewGymAddress] = useState("")
   const [newGymPhoneNum, setNewGymPhoneNum] = useState("")
-  const [gymPicture, setGymPicture] = useState("")
+  const [photo, setPhoto] = useState("")
+  const [lat, setLat] = useState("")
+  const [lng, setLng] = useState("")
   const [errors, setErrors] = useState([]);
+  const gymOwnerId = useSelector(state => state.session.user.id)
+  // console.log(gymOwnerId, '------ gymOwnerId')
   const dispatch = useDispatch()
   const history = useHistory()
 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    await dispatch()
+  }
 
   return (
     <>
@@ -97,8 +107,28 @@ export default function AddGymForm() {
                   <Input
                     placeholder="Picture"
                     type='file'
-                    value={gymPicture}
-                    onChange={(e) => setGymPicture(e.target.value)}
+                    value={photo}
+                    onChange={(e) => setPhoto(e.target.file[0])}
+                    mb={'25px'}
+                  />
+                </InputGroup>
+                <FormLabel>Latitude</FormLabel>
+                <InputGroup>
+                  <Input
+                    placeholder="Latitude"
+                    type='number'
+                    value={lat}
+                    onChange={(e) => setLat(e.target.value)}
+                    mb={'25px'}
+                  />
+                </InputGroup>
+                <FormLabel>Longitude</FormLabel>
+                <InputGroup>
+                  <Input
+                    placeholder="Longitude"
+                    type='number'
+                    value={lng}
+                    onChange={(e) => setLng(e.target.value)}
                     mb={'25px'}
                   />
                 </InputGroup>

@@ -41,7 +41,40 @@ export const getAllGyms = () => async (dispatch) => {
 
 }
 
-export const createNewGym = () => async (dispatch) => {
+export const createNewGym = (gymData) => async (dispatch) => {
+  const { newGymName, newGymAddress, newGymPhoneNum, photo, lat, lng, gymOwnerId } = gymData
+
+  const body = new FormData();
+
+  body.append('photo', photo)     // appending to body array right?
+
+  const imageResponse = await fetch('/api/gym/photo/', {
+    method: "POST",     // why does it work without a header?
+    body
+  });
+
+  const { photo_url } = await imageResponse.json()
+
+  const response = await fetch('/api/gyms/', {
+    method: 'POST',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      newGymName,
+      newGymAddress,
+      newGymPhoneNum,
+      photo_url,
+      lat,
+      lng,
+      gymOwnerId,
+    })
+  })
+
+  if (response.ok) {
+    const newGym = await response.json()
+    dispatch(createGym(newGym))
+  } else {
+    return response
+  }
 
 }
 
