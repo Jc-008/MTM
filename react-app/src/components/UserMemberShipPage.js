@@ -80,6 +80,7 @@ function UserMemberShipPage() {
       })
     )
   }
+  console.log(Object.values(user.reserved_classes))
 
 
   function handleEdit() {
