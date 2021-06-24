@@ -55,7 +55,7 @@ export const createNewGym = (gymData) => async (dispatch) => {
 
   const { photo_url } = await imageResponse.json()
 
-  const response = await fetch('/api/gyms/', {
+  const response = await fetch('/api/gyms/add/', {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

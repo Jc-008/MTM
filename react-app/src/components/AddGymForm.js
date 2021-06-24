@@ -102,16 +102,6 @@ export default function AddGymForm() {
                     mb={'25px'}
                   />
                 </InputGroup>
-                <FormLabel>Gym Photo or Logo</FormLabel>
-                <InputGroup>
-                  <Input
-                    placeholder="Picture"
-                    type='file'
-                    value={photo}
-                    onChange={(e) => setPhoto(e.target.file[0])}
-                    mb={'25px'}
-                  />
-                </InputGroup>
                 <FormLabel>Latitude</FormLabel>
                 <InputGroup>
                   <Input
@@ -129,6 +119,16 @@ export default function AddGymForm() {
                     type='number'
                     value={lng}
                     onChange={(e) => setLng(e.target.value)}
+                    mb={'25px'}
+                  />
+                </InputGroup>
+                <FormLabel>Gym Photo or Logo</FormLabel>
+                <InputGroup>
+                  <Input
+                    placeholder="Picture"
+                    type='file'
+                    value={photo}
+                    onChange={(e) => setPhoto(e.target.file[0])}
                     mb={'25px'}
                   />
                 </InputGroup>

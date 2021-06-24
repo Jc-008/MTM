@@ -22,7 +22,7 @@ import { closeEditModal } from "../../store/modal";
 
 
 export function BaseOfModal() {
-  const modalStatus = useSelector(state => state.modal.editModal)
+  // const modalStatus = useSelector(state => state.modal.editModal)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const dispatch = useDispatch()
   // const initialRef = React.useRef()
@@ -47,7 +47,7 @@ export function BaseOfModal() {
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent >
+        <ModalContent>
           <ModalHeader>
             Edit Details
           </ModalHeader>
@@ -55,7 +55,7 @@ export function BaseOfModal() {
           <ModalBody pb={6}>
           </ModalBody>
           <EditModal />
-          {/* <h1> hello this is the modal</h1> */}
+
           <ModalFooter>
             {/* <Button>
               Submit

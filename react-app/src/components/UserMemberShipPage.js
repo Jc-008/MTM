@@ -52,8 +52,8 @@ function UserMemberShipPage() {
   if (user.is_owner) {
     ifOwner = (
       <Button
-        h='125px'
-        w='125px'
+        h='100px'
+        w='100px'
         colorScheme='blackAlpha'
       >
         <a href='/add-gym' >
@@ -214,7 +214,7 @@ function UserMemberShipPage() {
               w='30em'
               h='150px'
               mt='50px'
-              ml='25px'
+              ml='35px'
             // justify='center'
             >
               <Box>
