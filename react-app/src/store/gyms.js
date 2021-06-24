@@ -101,6 +101,13 @@ export default function gymReducer(state = initialState, action) {
       newState = { ...state }
       newState.singleGym = newState.allGyms[action.gym] || null
 
+
+    case CREATE_GYM:
+
+
+    case DELETE_GYM:
+
+
       return newState
 
     default:

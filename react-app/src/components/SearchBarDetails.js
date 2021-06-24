@@ -66,7 +66,7 @@ const SearchBarDetails = () => {
           direction='column'
         >
           {searchTerm && gyms.filter(gym => gym.name.toLowerCase().includes(searchTerm) || gym.address.toLowerCase().includes(searchTerm)).map(gym => (
-            <SearchResult result={gym} setSearchTerm={setSearchTerm} />
+            <SearchResult result={gym} key={gym.id} setSearchTerm={setSearchTerm} />
           ))}
         </Flex>
         {/* <div
@@ -88,7 +88,8 @@ function SearchResult({ result, setSearchTerm }) {
   return (<div className='single-result'>
     <Link
       onClick={onClickGym}
-      to={`/gyms/${result.id}`}>
+      to={`/gyms/${result.id}`}
+    >
       <div>
         {result.name}
       </div>

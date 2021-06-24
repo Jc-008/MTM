@@ -51,8 +51,12 @@ function UserMemberShipPage() {
   let ifOwner
   if (user.is_owner) {
     ifOwner = (
-      <Button>
-        <a href='/add-gym'>
+      <Button
+        h='125px'
+        w='125px'
+        colorScheme='blackAlpha'
+      >
+        <a href='/add-gym' >
           <i className="fa fa-plus"></i>
         </a>
       </Button>
@@ -65,6 +69,7 @@ function UserMemberShipPage() {
             direction='column'
             mb='2em'
             bg='#f7f7f7'
+
           >
             <Link href={`/classes/${singleClass.id}`}>
               {singleClass.class.title}
@@ -110,6 +115,7 @@ function UserMemberShipPage() {
           <Text
             align={"center"}
             justify={"center"}
+            fontSize='20px'
           >
             zipcode: {user.zipcode}
           </Text>
@@ -125,7 +131,8 @@ function UserMemberShipPage() {
             Edit Details
           </Button> */}
           <Flex
-            ml='292px'
+            ml='270px'
+            mt='30px'
           >
             <BaseOfModal />
 
@@ -166,8 +173,8 @@ function UserMemberShipPage() {
               // border={'5px solid #f7f7f7'}
               border={'2px solid #e0e0e0'}
               bg={'white'}
-              ml={'730px'}
-              mt={'75px'}
+              ml={'440px'}
+            // mt={'75px'}
             >
               <Heading fontSize={'30px'} fontFamily={'body'}>
                 Credit plan
@@ -202,8 +209,11 @@ function UserMemberShipPage() {
             {ownerOrNot}
             <Flex
               // bg='lightgreen'
+              name='Add-button-flex'
               w='30em'
-              h='4.6em'
+              h='150px'
+              mt='50px'
+              ml='25px'
             // justify='center'
             >
               <Box>

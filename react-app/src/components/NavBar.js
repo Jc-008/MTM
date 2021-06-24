@@ -107,6 +107,10 @@ const NavBar = () => {
     dispatch(getAllGyms())                // when all the gyms populate the  allgyms = {}
   }, [dispatch])
 
+  useEffect(() => {
+    console.log('navBar re-render')
+  }, [])
+
   return (
     <>
       <Grid templateColumns="repeat(10, 1fr)" gap={.7} bg="#FFFFF" minHeight={'64px'} >
