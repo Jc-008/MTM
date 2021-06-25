@@ -6,10 +6,10 @@ import { getAllClasses } from '../store/classes'
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow, LoadScript } from '@react-google-maps/api';
 import Geocode from "react-geocode";
 import {
-  name,
-  Wrap,
-  WrapItem,
-  Divider,
+  // name,
+  // Wrap,
+  // WrapItem,
+  // Divider,
   Box,
   Flex,
   Text,
