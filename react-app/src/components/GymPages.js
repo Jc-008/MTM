@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom';
 // import gyms from '../store/gyms'
 import { getAGym } from '../store/gyms'
 import { BiMap, BiPhone } from "react-icons/bi";
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow, LoadScript } from '@react-google-maps/api';
+import Geocode from "react-geocode";
 import {
   Box,
   Flex,
@@ -21,6 +23,11 @@ export default function GymPages() {
   const dispatch = useDispatch()
   const { id } = useParams()
   const classesInGym = useSelector(state => state.gym?.singleGym?.classSessions)
+  const [load, setLoad] = useState(false)
+  const [apiKey, setApiKey] = useState('')
+  const [map, setMap] = useState(null)
+
+
   // console.log(classesInGym, '.....?????')
   console.log(gym, '.....?????')
 
@@ -28,6 +35,17 @@ export default function GymPages() {
     // dispatch(gymReducer.getAllGyms())
     gymsLoaded && dispatch(getAGym(id))      // if allGyms[id] is truthy then it will dispatch
   }, [dispatch, id, gymsLoaded])
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch('/api/gyms/maps')
+      const map = await response.json()
+      setApiKey(map)
+      // setLoadedMarkers(gymMarkers())
+      setLoad(true)
+    })()
+  }, [gym])
+
 
   // console.log(gym, '-------')
 
@@ -50,6 +68,30 @@ export default function GymPages() {
 
   // const singleGym = findCurrentGym(gyms, id)
   // console.log(singleGym, 'Single Gym details')
+
+  Geocode.setApiKey(apiKey);
+  Geocode.setLanguage("en");
+  Geocode.setRegion("us");
+  Geocode.setLocationType("ROOFTOP");
+
+
+  const containerStyle = {
+    width: '100%',
+    height: '100%'
+  };
+
+  const gymLat = gym?.lat
+  const gymLng = gym?.lng
+
+  const center = {
+    lat: gymLat,
+    lng: gymLng,
+  };
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
+
 
   return gym && (
     <>
@@ -128,7 +170,7 @@ export default function GymPages() {
                       // direction='column'
                       justify={'space-around'}
                       align={'center'}
-                      bg='lightslategray'
+                      bg='lightgray'
                       w='100%'
 
                     >
@@ -170,7 +212,7 @@ export default function GymPages() {
           h='97vh'
           direction='column'
         >
-          <Box
+          {load && (<Box
             name='map-container'
             border='1px solid black'
             w='375px'
@@ -178,7 +220,23 @@ export default function GymPages() {
             ml='72px'
             mt='100px'
           >
-          </Box>
+            <LoadScript googleMapsApiKey={apiKey}>
+              <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={18}
+                // onLoad={onLoad}
+                onUnmount={onUnmount}
+              >
+                <Marker
+                  position={center}
+                />
+              </GoogleMap>
+            </LoadScript>
+
+          </Box>)}
+
+
           <Box
             name='gym-detail-container'
             bg='#f7f7f7'
