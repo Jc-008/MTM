@@ -19,9 +19,9 @@ export const createReservation = (reservation, classSessionId) => ({
   classSessionId
 })
 
-export const deleteReservation = (reservationID) => ({
+export const deleteReservation = (classSessionId) => ({
   type: DELETE_RESERVATION,
-  reservationID
+  classSessionId
 })
 
 
@@ -156,7 +156,11 @@ export default function reducer(state = initialState, action) {
 
     case DELETE_RESERVATION:
       newState = { ...state }
-      delete newState.user.reserved_classes[action.reservationID]
+      console.log(newState, '---- initalState')
+      console.log(action.classSessionId, '---- action classSessionID')
+      // delete newState.user.reserved_classes[action.reservationID]
+      delete newState.user.reserved_classes[action.classSessionId.classSessionId]
+      console.log(newState, '---- newState after Delete')
       return newState
 
     default:

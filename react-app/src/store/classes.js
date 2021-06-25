@@ -70,9 +70,10 @@ export const removeReservation = (reservationId) => async (dispatch) => {
     return { errors }
   }
 
-  const reservation = await response.json()
-  dispatch(deleteReservation(reservationId))
-  return reservation
+  const classSessionId = await response.json()
+  console.log(classSessionId, '----- classSessionID from thunk')
+  dispatch(deleteReservation(classSessionId))
+  return classSessionId
 }
 
 

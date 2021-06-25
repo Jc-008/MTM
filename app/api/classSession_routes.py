@@ -64,8 +64,9 @@ def create_reservation():
 def delete_reservation():
     reservation_id = request.json['reservationId']
     reservation = Reservation.query.get(reservation_id)
+    classSession_id = reservation.classSession_id
     db.session.delete(reservation)
     db.session.commit()
-    return {'message': 'success'}
+    return {'classSessionId': classSession_id}
 
 # -----------------------------------------------------------------------------------#
