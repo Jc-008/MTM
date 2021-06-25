@@ -20,10 +20,10 @@ import {
 } from "@chakra-ui/react";
 
 export default function BusinessOwnerLogin() {
-  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const dispatch = useDispatch();
   const history = useHistory();
 
 

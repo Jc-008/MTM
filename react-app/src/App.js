@@ -16,6 +16,7 @@ import UserMemberShipPage from "./components/UserMemberShipPage";
 import GymPages from "./components/GymPages";
 import ClassPages from "./components/ClassPages";
 import { authenticate } from "./store/session";
+import AddGymForm from "./components/AddGymForm";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -69,13 +70,17 @@ function App() {
           <ClassPages />
         </Route>
 
+        <Route path="/add-gym" exact={true}>
+          <AddGymForm />
+        </Route>
+        {/*
         <ProtectedRoute path="/users" exact={true} >
           <UsersList />
         </ProtectedRoute>
 
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
 
         {/* <ProtectedRoute path="/" exact={true} >
           <h1>My Home Page</h1>

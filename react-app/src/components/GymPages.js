@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 // import * as gymReducer from '../store/gyms'
 // import { getOneGym } from '../store/gyms'
-import { getAGym } from '../store/gyms'
 // import gyms from '../store/gyms'
-import { FaPhoneAlt, FaDirections } from 'react-icons/fa'
+import { getAGym } from '../store/gyms'
 import { BiMap, BiPhone } from "react-icons/bi";
 import {
   Box,
@@ -13,7 +12,7 @@ import {
   Text,
   Image,
   Link,
-  Button,
+  // Button,
 } from "@chakra-ui/react"
 
 export default function GymPages() {
@@ -86,7 +85,7 @@ export default function GymPages() {
             >
             </Image>
           </Flex>
-          <Flex
+          {/* <Flex
             w='850px'
             bg='white'
             ml='350px'
@@ -100,7 +99,7 @@ export default function GymPages() {
             >
               {gym.name}
             </Text>
-          </Flex>
+          </Flex> */}
           <Flex
             w='750px'
             bg='white'
@@ -109,7 +108,7 @@ export default function GymPages() {
 
             <Flex
               name='gym-classes-container'
-              h='400px'
+              h='auto'
               w='850px'
               // bg='purple'
               bg='#f7f7f7'
@@ -182,14 +181,29 @@ export default function GymPages() {
           </Box>
           <Box
             name='gym-detail-container'
-            bg='white'
+            bg='#f7f7f7'
             // align={"center"}
             justify={"center"}
-            w='315px'
+            w='350px'
             h='350px'
-            ml='102px'
+            mt='25px'
+            ml='85px'
           // mt='100px'
           >
+            <Flex
+              justify='center'
+            // alignContent='center'
+            >
+              <Text
+                // ml='30px'
+                mt='25px'
+                fontSize='20px'
+                fontWeight='700'
+              >
+                {gym.name}
+              </Text>
+
+            </Flex>
             <Flex>
               <Text
                 ml='15px'

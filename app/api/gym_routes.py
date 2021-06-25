@@ -26,6 +26,23 @@ def get_one_gym(id):
     return gym.to_dict()
 
 
+# /api/gyms/add/
+# @gym_routes.route('/add/')
+# # @login_required
+# def add_one_gym():
+
+
+@gym_routes.route('/<int:gymId>/', methods=['DELETE'])
+@login_required
+def delete_gym(gymId):
+    if id < 19:
+        return 401
+    gym_id = Gym.query.get(gymId)
+    db.session.delete(gym_id)
+    db.session.commit()
+    return {'message': 'successfully deleted this gym'}
+
+
 @gym_routes.route('/maps')
 def get_map_api():
     '''

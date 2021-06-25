@@ -7,16 +7,16 @@ import {
   Link,
   Text,
   Image,
-  Input,
-  Stack,
+  // Input,
+  // Stack,
   Button,
   Heading,
-  FormLabel,
-  Container,
-  InputGroup,
-  FormControl,
+  // FormLabel,
+  // Container,
+  // InputGroup,
+  // FormControl,
   useDisclosure,
-  useColorModeValue,
+  // useColorModeValue,
 } from "@chakra-ui/react";
 import { FaRegFileExcel } from 'react-icons/fa';
 import { BaseOfModal } from './modal/modal';
@@ -37,10 +37,6 @@ function UserMemberShipPage() {
     return null
   }
 
-
-  // align = { "center"}
-  // justify = { "center"}
-
   let ownerOrNot
   if (user.is_owner) {
     ownerOrNot = (
@@ -51,6 +47,42 @@ function UserMemberShipPage() {
       <Text mt={'50px'} ml={'25px'} fontSize={'25px'} fontWeight={'500'}>Reserved Classes</Text>
     )
   }
+
+  let ifOwner
+  if (user.is_owner) {
+    ifOwner = (
+      <Button
+        h='100px'
+        w='100px'
+        colorScheme='blackAlpha'
+      >
+        <a href='/add-gym' >
+          <i className="fa fa-plus"></i>
+        </a>
+      </Button>
+    )
+  } else {
+    ifOwner = (
+      Object.values(user.reserved_classes).map((singleClass) => {
+        console.log(singleClass, '---- single classes info')
+        return (
+          <Flex
+            direction='column'
+            wrap='wrap'
+            mb='2em'
+            bg='#f7f7f7'
+          >
+            <Link href={`/classes/${singleClass.class.id}`}>
+              {singleClass.class.title}
+            </Link>
+            {singleClass.class.time}
+          </Flex>
+        )
+      })
+    )
+  }
+  // console.log(Object.values(user.reserved_classes))
+
 
   function handleEdit() {
     dispatch(showEditModal())
@@ -85,6 +117,7 @@ function UserMemberShipPage() {
           <Text
             align={"center"}
             justify={"center"}
+            fontSize='20px'
           >
             zipcode: {user.zipcode}
           </Text>
@@ -100,7 +133,8 @@ function UserMemberShipPage() {
             Edit Details
           </Button> */}
           <Flex
-            ml='292px'
+            ml='270px'
+            mt='30px'
           >
             <BaseOfModal />
 
@@ -141,8 +175,8 @@ function UserMemberShipPage() {
               // border={'5px solid #f7f7f7'}
               border={'2px solid #e0e0e0'}
               bg={'white'}
-              ml={'730px'}
-              mt={'75px'}
+              ml={'440px'}
+            // mt={'75px'}
             >
               <Heading fontSize={'30px'} fontFamily={'body'}>
                 Credit plan
@@ -177,12 +211,16 @@ function UserMemberShipPage() {
             {ownerOrNot}
             <Flex
               // bg='lightgreen'
+              name='Add-button-flex'
               w='30em'
-              h='4.6em'
+              h='150px'
+              mt='50px'
+              ml='35px'
             // justify='center'
             >
               <Box>
-                {Object.values(user.reserved_classes).map((singleClass) => {
+                {ifOwner}
+                {/* {Object.values(user.reserved_classes).map((singleClass) => {
                   return (
                     <Flex
                       direction='column'
@@ -195,7 +233,7 @@ function UserMemberShipPage() {
                       {singleClass.class.time}
                     </Flex>
                   )
-                })}
+                })} */}
               </Box>
 
             </Flex>

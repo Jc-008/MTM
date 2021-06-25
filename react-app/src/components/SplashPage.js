@@ -1,7 +1,21 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import LoginForm from './auth/LoginForm'
-import { name, Wrap, WrapItem, Divider, Box, Image, Container, Center, LinkBox, LinkOverlay, Heading, Flex, Text } from "@chakra-ui/react"
+import {
+  // name,
+  // Wrap,
+  // WrapItem,
+  // Divider,
+  Box,
+  Image,
+  // Container,
+  // Center,
+  // LinkBox,
+  // LinkOverlay,
+  // Heading,
+  Flex,
+  Text
+} from "@chakra-ui/react"
 
 
 
@@ -53,10 +67,4 @@ export default function SplashPage() {
     </>
   )
 
-
 }
-
-
-{/* <Container mw={'100vw'}>
-<Image src="https://images.ctfassets.net/ew96z4wsnz93/2LGVlmCh6Apy9bAmXNvR8u/572c282fa3b69ca4f0618e95ffc4ffa2/Homepage_Hero-Image_Desktop2.jpg" />
-</Container> */}

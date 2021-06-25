@@ -3,7 +3,7 @@ from app.models import db, Gym, Reservation
 
 def seed_reservation():
 
-    for i in range(3):
+    for i in range(2):
         reservation = Reservation(user_id=1, classSession_id=i + 1)
         db.session.add(reservation)
 

@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
-import { FaPhoneAlt, FaDirections } from 'react-icons/fa'
 import { getAllClasses } from '../store/classes'
-import { getAClass } from '../store/classes'
 import { BiMap, BiTime, BiMoney } from "react-icons/bi";
 import { makeReservation, removeReservation } from '../store/classes'
+// import { getAClass } from '../store/classes'
 import {
   Box,
   Flex,
   Text,
   Image,
-  Link,
   Button,
 } from "@chakra-ui/react"
 
@@ -19,29 +17,60 @@ import {
 export default function ClassPages() {
   // Used without the loaded
   const allClasses = useSelector(state => state?.classSession?.allClassSessions)
-  const user = useSelector(state => state?.session.user)
+  // const user = useSelector(state => state?.session.user)
   const dispatch = useDispatch()
   const { id } = useParams()
+  const userReserveClass = useSelector(state => state?.session?.user?.reserved_classes[id])
+  const [reservation, setReservation] = useState(!!userReserveClass)
   const currentClassDetails = allClasses[id]
+  const currentGymName = currentClassDetails?.gym?.name
+  const currentGymAddress = currentClassDetails?.gym?.address
 
   useEffect(() => {
     dispatch(getAllClasses())
   }, [dispatch])
 
-  // console.log(id, '.... this is ID')
-  console.log(allClasses, '....AllClass Array')
-  // console.log(currentClassDetails?.imageUrl, '...... this is a single class ')
-  console.log(currentClassDetails, '...... this is a single class details ')
-  // console.log(user, '..... user')
+  useEffect(() => {
+
+    setReservation(!reservation)
+  }, [userReserveClass])                      // listen to the state of userReserveClass at the specific ID
+
+
+  // console.log(userReserveClass, '..... userReserveClass')
+
 
   function handleReservation() {
 
-    if (!user.reserved_classes[id]) {   // created the reservation
+    if (!userReserveClass) {   // created the reservation
       dispatch(makeReservation(id))
+
     } else {
-      dispatch(removeReservation(user.reserved_classes[id].reservationId))
+      dispatch(removeReservation(userReserveClass.reservationId))
     }
   }
+  // function handleReservation() {
+
+  //   if (!user.reserved_classes[id]) {   // created the reservation
+  //     dispatch(makeReservation(id))
+
+  //   } else {
+  //     dispatch(removeReservation(user.reserved_classes[id].reservationId))
+  //   }
+  // }
+
+  // function handleReservation() {
+  //   if (!user.reserved_classes[id]) {   // created the reservation
+  //     return (
+  //       <Button ml='135px' mt='25px' onClick={() => dispatch(makeReservation(id))}>Reserve</Button>
+  //     )
+  //   } else {
+  //     return (
+  //       <Button ml='135px' mt='25px' onClick={() => dispatch(removeReservation(user.reserved_classes[id].reservationId))}>Cancel</Button>
+  //     )
+  //   }
+  // }
+
+
 
 
   return (
@@ -100,15 +129,15 @@ export default function ClassPages() {
           >
 
             <Flex
-              // name='gym-classes-container'
-              h='400px'
+              name='gym-class-description-container'
+              // h='400px'
               w='850px'
               // bg='purple'
               bg='#f7f7f7'
               direction='column'
             >
               <Text
-                fontSize='30px'
+                fontSize='20px'
                 fontWeight='600'
                 mt='25px'
                 justify='center'
@@ -143,11 +172,26 @@ export default function ClassPages() {
             bg='#f7f7f7'
             // align={"center"}
             justify={"center"}
-            w='315px'
+            w='350px'
             h='350px'
-            ml='102px'
+            mt='25px'
+            ml='85px'
           // mt='100px'
           >
+            <Flex
+              justify='center'
+            // alignContent='center'
+            >
+              <Text
+                // ml='30px'
+                mt='25px'
+                fontSize='20px'
+                fontWeight='700'
+              >
+                {currentGymName}
+              </Text>
+
+            </Flex>
             <Flex>
               <Text
                 ml='15px'
@@ -161,7 +205,7 @@ export default function ClassPages() {
                 fontSize='20px'
                 fontWeight='400'
               >
-                {/* {gym.address} */}
+                {currentGymAddress}
               </Text>
 
             </Flex>
@@ -201,16 +245,13 @@ export default function ClassPages() {
             </Flex>
             <Button
               onClick={handleReservation}
-              ml='100px'
-              mt='50px'
+              ml='135px'
+              mt='25px'
             >
-              {user.reserved_classes[id] &&
-                'Cancel'
-              }
-              {!user.reserved_classes[id] &&
-                'Reserve'
-              }
+              {userReserveClass && 'Cancel'}
+              {!userReserveClass && 'Reserve'}
             </Button>
+            {/* {handleReservation()} */}
           </Box>
 
         </Flex>

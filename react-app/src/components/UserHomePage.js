@@ -26,18 +26,30 @@ export default function UserHomePage() {
   const dispatch = useDispatch()
   const { id } = useParams()
   const [map, setMap] = useState(null)
+  const [loadedMarkers, setLoadedMarkers] = useState([])
 
   // console.log(gymClasses, '..... this is the classes')
-  console.log(allGyms, '..... allGyms')
+  // console.log(allGyms, '..... allGyms')
+  // console.log()
 
   useEffect(() => {
-    (async () => {
-      const response = await fetch('/api/gyms/maps')
-      const map = await response.json()
-      setApiKey(map)
-      setLoad(true)
-    })()
-  }, [])
+    if (loadedMarkers.length === 0) {
+      (async () => {
+        const response = await fetch('/api/gyms/maps')
+        const map = await response.json()
+        setApiKey(map)
+        setLoadedMarkers(gymMarkers())
+        setLoad(true)
+      })()
+    }
+  }, [allGyms])
+
+  // useEffect(() => {
+  //   if (allGyms.length > 0) {
+  //     setLoadedMarkers(gymMarkers())
+  //     setLoad(true)
+  //   }
+  // }, [allGyms])
 
   useEffect(() => {
     dispatch(getAllClasses())
@@ -66,6 +78,33 @@ export default function UserHomePage() {
   //   setGymsList(gymsTempList)
   //   setLoad(true)
   // }, [])
+
+  function gymMarkers() {
+    if (allGyms && loadedMarkers.length === 0) {
+      console.log(allGyms, '..... line 74 gyms')
+      let mappedGyms = allGyms.map((gym, i) => {
+        return (
+          <Marker
+            key={i}
+            position={{ lat: gym.lat, lng: gym.lng }}
+          >
+          </Marker>
+        )
+      })
+      return mappedGyms
+    }
+  }
+  // gymsList != null && gymsList.map((gym, i) => {
+  //   return (
+  //     <Marker
+  //       key={i}
+  //       position={gym.location}
+  //     >
+  //       {console.log(gym.location, '...... gym location')}
+  //     </Marker>
+  //   )
+  // })
+
 
 
   //  for maps ------------------------------------ Below
@@ -172,6 +211,7 @@ export default function UserHomePage() {
               // onLoad={onLoad}
               onUnmount={onUnmount}
             >
+              {loadedMarkers}
               {/* {gymsList != null && gymsList.map((gym, i) => {
               return (
                 <Marker
@@ -201,9 +241,9 @@ export default function UserHomePage() {
             })} */}
 
 
-              <Marker
+              {/* <Marker
                 position={center}
-              />
+              /> */}
             </GoogleMap>
           </LoadScript>
 

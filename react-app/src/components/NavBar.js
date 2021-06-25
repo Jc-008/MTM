@@ -107,9 +107,13 @@ const NavBar = () => {
     dispatch(getAllGyms())                // when all the gyms populate the  allgyms = {}
   }, [dispatch])
 
+  useEffect(() => {
+    console.log('navBar re-render')
+  }, [])
+
   return (
     <>
-      <Grid templateColumns="repeat(10, 1fr)" gap={.7} bg="#FFFFF" minHeight={'64px'} >
+      <Grid templateColumns="repeat(10, 1fr)" gap={.7} bg="#FFFFF" minHeight={'64px'} borderBottom='solid 1px #f7f7f7' >
         <Flex alignItems='center' justifyContent='center' w="100%" h="64px" _hover={{ fontWeight: "bold", bg: "#f7f7f7" }}>
           {logoTxt}
           {/* <Link href='/' fontSize={'23px'} textAlign="center" fontWeight="Bold" style={{ textDecoration: 'none' }}>MTM</Link> */}
