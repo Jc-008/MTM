@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { getAllClasses } from '../store/classes'
 import { BiMap, BiTime, BiMoney } from "react-icons/bi";
 import { makeReservation, removeReservation } from '../store/classes'
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow, LoadScript } from '@react-google-maps/api';
+import Geocode from "react-geocode";
 // import { getAClass } from '../store/classes'
 import {
   Box,
@@ -25,6 +27,11 @@ export default function ClassPages() {
   const currentClassDetails = allClasses[id]
   const currentGymName = currentClassDetails?.gym?.name
   const currentGymAddress = currentClassDetails?.gym?.address
+  const currentGym = currentClassDetails?.gym
+  const [load, setLoad] = useState(false)
+  const [apiKey, setApiKey] = useState('')
+  const [map, setMap] = useState(null)
+
 
   useEffect(() => {
     dispatch(getAllClasses())
@@ -36,7 +43,18 @@ export default function ClassPages() {
   }, [userReserveClass])                      // listen to the state of userReserveClass at the specific ID
 
 
+  useEffect(() => {
+    (async () => {
+      const response = await fetch('/api/gyms/maps')
+      const map = await response.json()
+      setApiKey(map)
+      // setLoadedMarkers(gymMarkers())
+      setLoad(true)
+    })()
+  }, [currentClassDetails])
+
   // console.log(userReserveClass, '..... userReserveClass')
+
 
 
   function handleReservation() {
@@ -69,9 +87,35 @@ export default function ClassPages() {
   //     )
   //   }
   // }
+  // console.log(currentGymLat, 'LAT')
+  // console.log(currentGymLng, 'lng')
+
+  Geocode.setApiKey(apiKey);
+  Geocode.setLanguage("en");
+  Geocode.setRegion("us");
+  Geocode.setLocationType("ROOFTOP");
 
 
+  const containerStyle = {
+    width: '100%',
+    height: '100%'
+  };
 
+
+  const gymLat = currentGym?.lat
+  const gymLng = currentGym?.lng
+
+  // console.log(gymLat, gymLng, 'gymlat & lng')
+
+  const center = {
+    lat: gymLat,
+    lng: gymLng,
+  };
+  // console.log(center, 'center')
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
 
   return (
     <>
@@ -157,7 +201,7 @@ export default function ClassPages() {
           h='97vh'
           direction='column'
         >
-          <Box
+          {load && (<Box
             name='map-container'
             border='1px solid black'
             w='375px'
@@ -165,7 +209,22 @@ export default function ClassPages() {
             ml='72px'
             mt='100px'
           >
-          </Box>
+            <LoadScript googleMapsApiKey={apiKey}>
+              <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={15}
+                // onLoad={onLoad}
+                onUnmount={onUnmount}
+              >
+                <Marker
+                  position={center}
+                />
+              </GoogleMap>
+            </LoadScript>
+
+          </Box>)}
+
           <Box
             name='gym-detail-container'
             // bg='white'

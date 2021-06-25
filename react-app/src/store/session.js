@@ -26,7 +26,7 @@ export const deleteReservation = (classSessionId) => ({
 
 
 //---------------------------------------------------------------------------------------//
-const initialState = { user: null, loaded: false };
+
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -137,7 +137,7 @@ export const editUserDetails = ({ email, first_name, last_name, zipcode, passwor
 }
 
 
-
+const initialState = { user: null, loaded: false };
 //---------------------------------------------------------------------------------------//
 export default function reducer(state = initialState, action) {
   let newState;
