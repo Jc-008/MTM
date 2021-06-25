@@ -64,14 +64,15 @@ function UserMemberShipPage() {
   } else {
     ifOwner = (
       Object.values(user.reserved_classes).map((singleClass) => {
+        console.log(singleClass, '---- single classes info')
         return (
           <Flex
             direction='column'
+            wrap='wrap'
             mb='2em'
             bg='#f7f7f7'
-
           >
-            <Link href={`/classes/${singleClass.id}`}>
+            <Link href={`/classes/${singleClass.class.id}`}>
               {singleClass.class.title}
             </Link>
             {singleClass.class.time}
@@ -80,7 +81,7 @@ function UserMemberShipPage() {
       })
     )
   }
-  console.log(Object.values(user.reserved_classes))
+  // console.log(Object.values(user.reserved_classes))
 
 
   function handleEdit() {

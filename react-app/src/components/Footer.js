@@ -20,9 +20,11 @@ export default function FooterDetails() {
 
 
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={.7} bg='White'>
+    <Grid templateColumns="repeat(3, 1fr)" gap={.7} bg='White' h='97vh'>
       <Box
         w={'100vw'}
+        bottom='0px'
+        position='absolute'
         bg={useColorModeValue('#3f3f3f')}
         color={useColorModeValue('#ffffff')}>
         <Container as={Stack} py={10}>
