@@ -56,11 +56,10 @@ export const SignUpForm = () => {
         boxShadow={'0 4px 12px rgb(0 0 0 / 24%)'}
         p={8}
         mt={'15px'}
-      // h={'525px'}
       >
         <form onSubmit={handleSubmit}>
           <div>
-            {errors?.map((error, idx) => <span key={idx}>{error}</span>)}
+            {errors?.map((error) => <div>{error}</div>)}
           </div>
           <Stack spacing={3}>
             <FormControl mb={'15px'} isRequired>

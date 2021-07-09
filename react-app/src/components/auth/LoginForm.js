@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-// import { login } from "../../store/session";
-import * as sessionActions from "../../store/session"
+import { Redirect } from 'react-router'
+import { login } from "../../store/session";
+// import * as sessionActions from "../../store/session"
 import {
   Box,
   Flex,
@@ -19,6 +20,7 @@ import {
 
 export function LoginForm() {
   const dispatch = useDispatch();
+  // const user = useSelector(state => state.session.user)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -27,11 +29,10 @@ export function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
-    const dispatched = await dispatch(sessionActions.login(email, password))
+    const dispatched = await dispatch(login(email, password))
 
     if (dispatched.errors) {
-      setErrors(dispatch.errors)
+      setErrors(dispatched.errors)
     }
     else {
       history.push('/search')           // want to push to user's homepage after logging in. '/search'
@@ -42,14 +43,15 @@ export function LoginForm() {
     e.preventDefault();
     const email = 'demo@aa.io';
     const password = 'password'
-    const dispatched = await dispatch(sessionActions.login(email, password))
+    // const dispatched = await dispatch(sessionActions.login(email, password))
+    const dispatched = await dispatch(login(email, password))
 
     if (dispatched.errors) {
       setErrors(dispatch.errors)
-    } else {
+    }
+    else {
       history.push('/search')           // want to push to user's homepage after logging in. '/search'
     }
-
   }
 
   return (
@@ -64,9 +66,31 @@ export function LoginForm() {
 
       >
         <form onSubmit={handleSubmit}>
-          <div>
-            {errors?.map((error, idx) => <span key={idx}>{error}</span>)}
-          </div>
+          {/* <div className='form-errors' style={{ color: 'red' }}>
+            {errors?.map((error, idx) =>
+              <div key={idx}>
+                {error}
+              </div>)}
+          </div> */}
+          <Flex
+            className='form-errors'
+            direction='column'
+            alignItems='center'
+            mb='10px'
+          >
+            <Box
+              bg='#fcebec'
+              rounded={'lg'}
+            >
+              {errors?.map((error, idx) =>
+                <div
+                  className='form-errors'
+                  style={{ color: '#f9000b', fontWeight: '500', padding: '5px 72px' }}
+                  key={idx}>
+                  {error}
+                </div>)}
+            </Box>
+          </Flex>
           <Stack spacing={3}>
             <FormControl isRequired>
               <FormLabel>Email</FormLabel>
