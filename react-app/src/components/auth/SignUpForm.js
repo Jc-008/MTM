@@ -56,7 +56,7 @@ export const SignUpForm = () => {
         boxShadow={'0 4px 12px rgb(0 0 0 / 24%)'}
         p={8}
         mt={'15px'}
-        h={'525px'}
+      // h={'525px'}
       >
         <form onSubmit={handleSubmit}>
           <div>

@@ -148,6 +148,7 @@ export default function UserHomePage() {
           bg='lightgrey'
           w='60%'
           h='97vh'
+          minh='100%'
           overflow='scroll'
         // mt='50px'
         // h=''
@@ -201,6 +202,7 @@ export default function UserHomePage() {
         {load && (<Flex
           bg='linen'
           w='40%'
+        // h='97vh'
         >
 
           <LoadScript googleMapsApiKey={apiKey}>

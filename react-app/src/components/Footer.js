@@ -20,13 +20,14 @@ export default function FooterDetails() {
 
 
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={.7} bg='White' h='97vh'>
+    <Grid templateColumns="repeat(3, 1fr)" gap={.7} bg='White'>
       <Box
         w={'100vw'}
-        bottom='0px'
-        position='absolute'
+        bottom='0'
+        position='relative'
         bg={useColorModeValue('#3f3f3f')}
-        color={useColorModeValue('#ffffff')}>
+        color={useColorModeValue('#ffffff')}
+      >
         <Container as={Stack} py={10}>
           <SimpleGrid columns={3} spacing={3}>
             <Stack align={'flex-start'}>
