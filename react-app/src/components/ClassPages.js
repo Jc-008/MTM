@@ -125,6 +125,7 @@ export default function ClassPages() {
         // bg={'lightblue'}
         align={"center"}
         justify={"center"}
+        mb='100px'
       >
         <Flex
           name='left-container'
@@ -181,10 +182,11 @@ export default function ClassPages() {
               direction='column'
             >
               <Text
+                justify='center'
                 fontSize='20px'
                 fontWeight='600'
                 mt='25px'
-                justify='center'
+                mb='100px'
               >
                 {currentClassDetails?.description}
               </Text>
@@ -231,10 +233,10 @@ export default function ClassPages() {
             bg='#f7f7f7'
             // align={"center"}
             justify={"center"}
-            w='350px'
+            w='375px'
             h='350px'
             mt='25px'
-            ml='85px'
+            ml='72px'
           // mt='100px'
           >
             <Flex

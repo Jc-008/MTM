@@ -97,7 +97,7 @@ export default function GymPages() {
     <>
       <Flex
         name={'gym-body-container'}
-        h={'97vh'}
+        h={'100vh'}
         // bg={'lightblue'}
         align={"center"}
         justify={"center"}
