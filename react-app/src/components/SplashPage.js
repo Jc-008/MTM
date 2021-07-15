@@ -38,7 +38,8 @@ export default function SplashPage() {
       <Flex
         align={"center"}
         justify={"center"}
-        mb={'35px'}
+        mb={'20px'}
+      // mb={'35px'}
       >
         <Box
           name={'image-container'}
