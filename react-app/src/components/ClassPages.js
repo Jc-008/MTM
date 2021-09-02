@@ -53,10 +53,6 @@ export default function ClassPages() {
     })()
   }, [currentClassDetails])
 
-  // console.log(userReserveClass, '..... userReserveClass')
-
-
-
   function handleReservation() {
 
     if (!userReserveClass) {   // created the reservation
@@ -66,29 +62,8 @@ export default function ClassPages() {
       dispatch(removeReservation(userReserveClass.reservationId))
     }
   }
-  // function handleReservation() {
 
-  //   if (!user.reserved_classes[id]) {   // created the reservation
-  //     dispatch(makeReservation(id))
 
-  //   } else {
-  //     dispatch(removeReservation(user.reserved_classes[id].reservationId))
-  //   }
-  // }
-
-  // function handleReservation() {
-  //   if (!user.reserved_classes[id]) {   // created the reservation
-  //     return (
-  //       <Button ml='135px' mt='25px' onClick={() => dispatch(makeReservation(id))}>Reserve</Button>
-  //     )
-  //   } else {
-  //     return (
-  //       <Button ml='135px' mt='25px' onClick={() => dispatch(removeReservation(user.reserved_classes[id].reservationId))}>Cancel</Button>
-  //     )
-  //   }
-  // }
-  // console.log(currentGymLat, 'LAT')
-  // console.log(currentGymLng, 'lng')
 
   Geocode.setApiKey(apiKey);
   Geocode.setLanguage("en");
