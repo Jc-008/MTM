@@ -102,7 +102,7 @@ export default function AddGymForm() {
                     mb={'25px'}
                   />
                 </InputGroup>
-                <FormLabel>Latitude</FormLabel>
+                {/* <FormLabel>Latitude</FormLabel>
                 <InputGroup>
                   <Input
                     placeholder="Latitude"
@@ -121,7 +121,7 @@ export default function AddGymForm() {
                     onChange={(e) => setLng(e.target.value)}
                     mb={'25px'}
                   />
-                </InputGroup>
+                </InputGroup> */}
                 <FormLabel>Gym Photo or Logo</FormLabel>
                 <InputGroup>
                   <Input

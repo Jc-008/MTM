@@ -79,7 +79,7 @@ export default function UserHomePage() {
   //   setLoad(true)
   // }, [])
 
-  function gymMarkers() {
+  function gymMarkers() {                         // may need to redesign
     if (allGyms && loadedMarkers.length === 0) {
       console.log(allGyms, '..... line 74 gyms')
       let mappedGyms = allGyms.map((gym, i) => {
